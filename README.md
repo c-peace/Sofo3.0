@@ -29,22 +29,22 @@ CHORE: 빌드 업무 수정, 패키지 매니저 수정(ex .gitignore 수정 같
  
 >제목 행의 첫 글자는 대문자로 시작\
 readme file modification X\
-Readme file modification O\
+Readme file modification O
 
 >제목 행 끝에 마침표를 넣지 않는다\
 제목 행의 끝에는 마침표가 필요 없다. 50자 규칙에 따르기 위해서라도 마침표를 넣는 것은 불필요한 공간 낭비이다\
 Open the door. X\
-Open the door O\
+Open the door O
 
->제목 행에 명령문을 사용한다/
+>제목 행에 명령문을 사용한다
 
->"명령이나 설명하듯이 작성"/
+>"명령이나 설명하듯이 작성"
 
->네 방을 치운다 (Clean your room)\
+>네 방을 치운다 (Clean your room)
 
->문을 닫는다 (Close the door)\
+>문을 닫는다 (Close the door)
 
->쓰레기를 갖다 버린다 (Take out the trash)\
+>쓰레기를 갖다 버린다 (Take out the trash)
 
 >본문은 72자마다 끊어 줄을 바꿔준다.
 
