@@ -1,0 +1,39 @@
+* {
+    color: #333333;
+    margin: 0;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 66px;
+    padding-top: 12px;
+    position: relative;
+}
+
+a {
+    text-decoration-line: none;
+}
+
+#logo {
+    font-size: 24px;
+}
+
+#linkBtnBox {
+    right: 0;
+    position: absolute;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    width: 366px;
+}
+
+.linkBtn {
+    font-size: 18px;
+    transition: all 200ms;
+}
+
+.linkBtn:hover {
+    color: black;
+}
