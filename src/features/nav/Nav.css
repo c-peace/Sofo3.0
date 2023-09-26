@@ -7,8 +7,8 @@ nav {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 66px;
-    padding-top: 12px;
+    height: 4.125rem;
+    padding-top: 0.75rem;
     position: relative;
 }
 
@@ -17,7 +17,8 @@ a {
 }
 
 #logo {
-    font-size: 24px;
+    font-size: 1.5rem;
+    cursor: default;
 }
 
 #linkBtnBox {
@@ -26,14 +27,16 @@ a {
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
-    width: 366px;
+    width: 22.8rem;
 }
 
 .linkBtn {
-    font-size: 18px;
+    font-size: 1.06rem;
     transition: all 200ms;
+    padding: 4px;
 }
 
 .linkBtn:hover {
     color: black;
+    transform: translateY(-2px);
 }
