@@ -1,0 +1,10 @@
+:root {
+    --size-canvasWidth: calc(88vh / 842 * 595);
+    --size-canvasHeight: calc(88vh);
+}
+
+#canvasLayerBox {
+    position: relative;
+    width: var(--size-canvasHeight);
+    height: var(--size-canvasHeight);
+}

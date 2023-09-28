@@ -3,6 +3,10 @@ import CanavasLayer from './CanvasLayer';
 
 export default function Canavas() {
     return (
-        <CanavasLayer />
+        <div id='canvasBox'>
+            <CanavasLayer />
+
+        </div>
+
     );
 }

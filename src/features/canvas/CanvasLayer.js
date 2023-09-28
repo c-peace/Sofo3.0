@@ -45,11 +45,11 @@ export default function CanavasLayer() {
     }, [flags]);
 
     return (
-        <div id='canvasBox'>
+        <>
             <canvas ref={canvasFlagRef} id='canvasFlag'></canvas>
             <canvas ref={canvasMainRef} id='canvasMain'></canvas>
             <canvas ref={canvasSubmitRef} id='canvasSubmit'></canvas>
-        </div>
+        </>
     );
 
     // Main canvas

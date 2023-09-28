@@ -1,7 +1,4 @@
-:root {
-    --size-canvasWidth: calc(88vh / 842 * 595);
-    --size-canvasHeight: calc(88vh);
-}
+
 
 /* canvas */
 canvas {
@@ -10,10 +7,6 @@ canvas {
     border: 2px solid #333333;
     width: var(--size-canvasWidth);
     height: var(--size-canvasHeight);
-}
-
-#canvasBox {
-    position: relative;
 }
 
 #canvasFlag {
