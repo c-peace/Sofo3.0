@@ -11,16 +11,16 @@ export default function SlideList() {
 
 function SlideForm() {
     return  <div>
-        <img src={image} id="addSlide" onclick="controlSlide(id)"></img>
-        <img src={image} id="addSlide" onclick="controlSlide(id)"></img>
-        <img src={image} id="addSlide" onclick="controlSlide(id)"></img>
-        <img src={image} id="addSlide" onclick="controlSlide(id)"></img>
-        <img src={image} id="addSlide" onclick="controlSlide(id)"></img>
-        <img src={image} id="addSlide" onclick="controlSlide(id)"></img>
-        <img src={image} id="addSlide" onclick="controlSlide(id)"></img>
-        <img src={image} id="addSlide" onclick="controlSlide(id)"></img>
-        <img src={image} id="addSlide" onclick="controlSlide(id)"></img>
-        <img src={image} id="addSlide" onclick="controlSlide(id)"></img>
-        <img src={image} id="addSlide" onclick="controlSlide(id)"></img>
+        <img src={image} id="addSlide" alt=''></img>
+        <img src={image} id="addSlide" alt=''></img>
+        <img src={image} id="addSlide" alt=''></img>
+        <img src={image} id="addSlide" alt=''></img>
+        <img src={image} id="addSlide" alt=''></img>
+        <img src={image} id="addSlide" alt=''></img>
+        <img src={image} id="addSlide" alt=''></img>
+        <img src={image} id="addSlide" alt=''></img>
+        <img src={image} id="addSlide" alt=''></img>
+        <img src={image} id="addSlide" alt=''></img>
+        <img src={image} id="addSlide" alt=''></img>
     </div>;
 }
