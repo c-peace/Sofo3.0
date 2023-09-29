@@ -18,6 +18,7 @@
     cursor: pointer;
     transition: all 200ms;
     border: 1px solid transparent;
+    background-color: transparent;
 }
 
 .canvasBtn:hover {
@@ -26,17 +27,23 @@
 
 
 /* element */
+.btn_input {
+    font-size: calc(18 / 969 * 100vh);
+    text-align: center;
+    padding-top: calc(4 / 969 * 100vh);
+    box-sizing: border-box;
+}
+
+.btn_input:focus {
+    outline: none;
+}
+
 #info_num {
     left: calc(30 / 969 * 100vh);
     top: calc(22 / 969 * 100vh);
     width: calc(58 / 969 * 100vh);
     height: calc(24 / 969 * 100vh);
-    font-size: calc(18 / 969 * 100vh);
-    text-align: center;
-    padding-top: calc(4 / 969 * 100vh);
-    box-sizing: border-box;
     opacity: 0;
-    display: flex;
 }
 
 #info_num:hover {
@@ -44,17 +51,72 @@
     opacity: 1;
 }
 
-#info_num:focus {
-    outline: none;
-}
-
 #info_key {
-    left: calc(89 / 969 * 100vh);
+    left: calc(88 / 969 * 100vh);
     top: calc(22 / 969 * 100vh);
-    width: calc(70 / 969 * 100vh);
+    width: calc(64 / 969 * 100vh);
     height: calc(24 / 969 * 100vh);
     font-size: calc(13 / 969 * 100vh);
-    background-color: transparent;
+    z-index: 5;
+}
+
+#info_tempo {
+    left: calc(152 / 969 * 100vh);
+    top: calc(22 / 969 * 100vh);
+    width: calc(78 / 969 * 100vh);
+    height: calc(24 / 969 * 100vh);
+    opacity: 0;
+}
+
+#info_tempo:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+    opacity: 1;
+}
+
+#info_sheet {
+    left: calc(502 / 969 * 100vh);
+    top: calc(20 / 969 * 100vh);
+    width: calc(78 / 969 * 100vh);
+    height: calc(25 / 969 * 100vh);
+}
+
+#songform {
+    left: calc(44 / 969 * 100vh);
+    top: calc(64 / 969 * 100vh);
+    width: calc(518 / 969 * 100vh);
+    height: calc(26 / 969 * 100vh);
+}
+
+#image {
+    left: calc(484 / 969 * 100vh);
+    top: calc(820 / 969 * 100vh);
+    width: calc(54 / 969 * 100vh);
+    height: calc(22 / 969 * 100vh);
+    border: 1px solid black;
+    border-radius: 3px 0 0 3px;
+    background-color: rgba(255, 255, 255, 0.637); 
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+}
+
+#flag {
+    left: calc(538 / 969 * 100vh);
+    top: calc(820 / 969 * 100vh);
+    width: calc(53 / 969 * 100vh);
+    height: calc(22 / 969 * 100vh);
+    border: 1px solid black;
+    border-radius: 0 3px 3px 0;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.637);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#image:hover, #flag:hover {
+    border: 1px solid rgb(231, 27, 27);
+    color: rgb(231, 27, 27);
 }
 
 /* dropdown */
@@ -63,17 +125,13 @@
     z-index: 4;
 }
 
-.forward_dropdown {
-    display : inline-block;
-    z-index: 5;
-}
-
 .dropdown-content-column {
     display: none;
     position: absolute;
     background-color: var(--color-dropdown-gray);
-    bottom: calc(25 / 969 * 100vh);
+    bottom: calc(24 / 969 * 100vh);
     border-radius: 4px;
+    height: fit-content;
 }
 
 .dropdown-content-row {
@@ -83,47 +141,38 @@
     background-color: var(--color-dropdown-gray);
     top: calc(26 / 969 * 100vh);
     border-radius: 6px;
+    width: fit-content;
 }
 
 option {
     background-color: transparent;
+    text-align: center;
+    font-size: 12px;
+    color: rgb(255, 255, 255);
+    display: block;
+    text-decoration: none;
 }
 
-#options {
+.options {
     background-color: transparent;
     display: flex;
     flex-flow: row nowrap;
 }
 
 .option-column {
-    display: block;
-    text-decoration: none;
-    color: rgb(255, 255, 255);
-    font-size: 12px;
     width: calc(30 / 969 * 100vh);
-    text-align: center;
     padding: 10px;
     border-radius: 4px;
 }
 
 .option-row-small {
-    display: block;
-    text-decoration: none;
-    color: rgb(255, 255, 255);
-    font-size: 12px;
     width: calc(30 / 969 * 100vh);
-    text-align: center;
     padding:6px 4px 6px 4px;
     border-radius: 6px;
 }
 
 .option-row-big {
-    display: block;
-    text-decoration: none;
-    color: rgb(255, 255, 255);
-    font-size: 12px;
     width: calc(38 / 969 * 100vh);
-    text-align: center;
     padding: 10px;
     border-radius: 6px;
 }
