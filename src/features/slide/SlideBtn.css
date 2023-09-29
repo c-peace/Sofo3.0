@@ -1,0 +1,24 @@
+:root {
+    --size-slideWidth: calc(88vh / 842 * 118);
+    --size-slideHeight: calc(88vh / 842 * 167);
+}
+
+#slideBtnBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: var(--size-slideWidth);
+    border: 1px solid red;
+}
+
+.slideBtn {
+    transition: all 200ms;
+    background-color: transparent;
+    font-size: 2rem;
+}
+
+.slideBtn:hover {
+    transform: translateY(-2px);
+    color: black;
+}
