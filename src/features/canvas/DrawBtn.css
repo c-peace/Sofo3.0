@@ -42,7 +42,7 @@
     left: calc(30 / 969 * 100vh);
     top: calc(22 / 969 * 100vh);
     width: calc(58 / 969 * 100vh);
-    height: calc(24 / 969 * 100vh);
+    height: calc(25 / 969 * 100vh);
     opacity: 0;
 }
 
@@ -55,7 +55,7 @@
     left: calc(88 / 969 * 100vh);
     top: calc(22 / 969 * 100vh);
     width: calc(64 / 969 * 100vh);
-    height: calc(24 / 969 * 100vh);
+    height: calc(25 / 969 * 100vh);
     font-size: calc(13 / 969 * 100vh);
     z-index: 5;
 }
@@ -64,7 +64,7 @@
     left: calc(152 / 969 * 100vh);
     top: calc(22 / 969 * 100vh);
     width: calc(78 / 969 * 100vh);
-    height: calc(24 / 969 * 100vh);
+    height: calc(25 / 969 * 100vh);
     opacity: 0;
 }
 
