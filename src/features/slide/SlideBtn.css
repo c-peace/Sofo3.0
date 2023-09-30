@@ -9,7 +9,7 @@
 }
 
 .slideBtn {
-    transition: all 200ms;
+    transition: all 100ms;
     background-color: transparent;
     font-size: 2rem;
     border-radius: 30px;

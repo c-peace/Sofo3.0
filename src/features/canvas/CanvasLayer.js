@@ -31,7 +31,7 @@ export default function CanavasLayer() {
             name: 'A',
             isDragging: false
         }]);
-        
+
     }, []);
 
     useEffect(() => {
