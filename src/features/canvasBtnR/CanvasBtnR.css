@@ -17,6 +17,7 @@
     padding: 6px 4px;
     border-radius: 6px;
     transition: all 100ms;
+    width: fit-content;
 }
 
 #btnForm:hover {
@@ -33,6 +34,6 @@
     background-color: transparent;
     font-size: 1rem;
     font-weight: normal;
-    margin-left: 4px;
+    padding: 0 4px;
     color: black;
 }
