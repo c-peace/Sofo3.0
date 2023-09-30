@@ -1,15 +1,12 @@
-import './MainLayer.css'
-
-import Slide from '/workspaces/Sofo3.0/src/features/slide/Slide.js';
-import Canvas from '/workspaces/Sofo3.0/src/features/canvas/Canvas.js';
-import CanvasBtnR from '/workspaces/Sofo3.0/src/features/canvasBtnR/CanvasBtnR.js';
+import WorkLayer from "./WorkLayer";
+import SetLayer from "./SetLayer";
+import './MainLayer.css';
 
 export default function MainLayer() {
-  return (
-    <div id='mainLayer'>
-      <Slide />
-      <Canvas />
-      <CanvasBtnR />
-    </div>
-  );
+    return (
+        <div id="mainLayer">
+            <WorkLayer />
+            <SetLayer />
+        </div>
+    );
 }

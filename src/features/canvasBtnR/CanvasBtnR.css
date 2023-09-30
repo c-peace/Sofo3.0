@@ -1,6 +1,7 @@
 #CanvasBtnRGroup {
     margin-left: 10px;
     height: var(--size-canvasHeight);
+    width: var(--size-slideWidth);
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
