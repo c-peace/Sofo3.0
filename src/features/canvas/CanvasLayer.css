@@ -1,8 +1,5 @@
-
-
 /* canvas */
 canvas {
-    position: absolute;
     border-radius: 10px;
     border: 2px solid #333333;
     width: var(--size-canvasWidth);
@@ -10,14 +7,15 @@ canvas {
 }
 
 #canvasFlag {
+    position: absolute;
     background-color: transparent;
-    z-index: 2;
+    z-index: 1;
 }
 
 #canvasMain {
     background-color: white;
     box-shadow: 0px 6px 4px #00000050;
-    z-index: 1;
+    z-index: 0;
 }
 
 #canvasSubmit {

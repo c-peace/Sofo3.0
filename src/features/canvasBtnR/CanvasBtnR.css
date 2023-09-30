@@ -1,0 +1,37 @@
+#CanvasBtnRGroup {
+    margin-left: 10px;
+    height: var(--size-canvasHeight);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    box-sizing: border-box;
+    padding-bottom: 2vh;
+}
+
+#btnForm {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+    padding: 6px 4px;
+    border-radius: 6px;
+    transition: all 100ms;
+}
+
+#btnForm:hover {
+    background-color: rgb(231, 231, 231);
+}
+
+#btnFormId {
+    background-color: transparent;
+    font-size: 1.3rem;
+    color: black;
+}
+
+#btnFormName {
+    background-color: transparent;
+    font-size: 1rem;
+    font-weight: normal;
+    margin-left: 4px;
+    color: black;
+}

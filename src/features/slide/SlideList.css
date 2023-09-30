@@ -22,8 +22,7 @@
     border-radius: 6px;
     box-sizing: border-box;
     border: 2px solid gray;
-    transition: all 200ms;
-    position: relative;
+    transition: all 100ms;
 }
 
 #listView img:hover {
