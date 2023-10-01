@@ -1,0 +1,32 @@
+/* about Slidebox */
+#listView {
+    width: var(--size-slideWidth);
+    height: 80vh;
+    overflow-y: scroll;
+    padding: 6px;
+}
+
+#listView::-webkit-scrollbar {
+    width: 4px;
+}
+
+#listView::-webkit-scrollbar-thumb {
+    background: linear-gradient(var(--color-beige-dark),#fc5050);
+    border-radius: 25px;
+}
+
+#listView img {
+    width: var(--size-slideWidth);
+    height: var(--size-slideHeight);
+    margin-bottom: 20px;
+    border-radius: 6px;
+    box-sizing: border-box;
+    border: 2px solid gray;
+    transition: all 100ms;
+}
+
+#listView img:hover {
+    border: 2px solid #fc5050;
+    transform: scale(98%);
+    box-shadow: 0px 0px 0px 2px transparent;
+}

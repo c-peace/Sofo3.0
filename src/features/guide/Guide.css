@@ -1,0 +1,21 @@
+#guideBox {
+    background-color: transparent;
+    position: absolute;
+    margin-top: 500px;
+    margin-left: 60px;
+}
+
+#guideName {
+    background-color: transparent;
+    font-size: 26px;
+    color: #666;
+    text-decoration: underline;
+    padding-bottom: 4px;
+}
+
+#guideDescription {
+    background-color: transparent;
+    font-size: 16px;
+    font-weight: bold;
+    color: #666;
+}

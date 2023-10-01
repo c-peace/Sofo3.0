@@ -8,6 +8,5 @@ export default function Canavas() {
             <DrawBtn />
             <CanavasLayer />
         </div>
-
     );
 }

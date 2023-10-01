@@ -1,0 +1,44 @@
+#routineSet {
+    display: flex;
+}
+
+#routineSetBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border: 1px solid #0038FF;
+    border-radius: 14px;
+    width: 54px;
+    height: 130px;
+}
+
+#routineSetItem {
+    background-color: transparent;
+    padding: 6px 4px;
+    border-radius: 10px;
+    font-size: 1.3rem;
+    transition: all 100ms;
+    color: black;
+}
+
+#routineSetItem:hover {
+    background-color: rgb(231, 231, 231);
+}
+
+#routineSetInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: baseline;
+    margin-left: 10px;
+    border: 1px solid transparent;
+    height: 130px;
+}
+
+#RoutineSetInfoItem {
+    font-size: .9rem;
+    font-weight: lighter;
+    padding: 6px 0px;
+    color: black;
+}

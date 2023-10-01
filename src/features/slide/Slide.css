@@ -1,0 +1,10 @@
+:root {
+    --size-slideWidth: calc(88vh / 842 * 118);
+    --size-slideHeight: calc(88vh / 842 * 167);
+}
+
+#slideBox {
+    display: flex;
+    flex-flow: column;
+    margin-right: 10px;
+}
