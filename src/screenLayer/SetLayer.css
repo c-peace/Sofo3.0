@@ -1,6 +1,7 @@
 #setLayer {
     width: 100vw;
-    height: calc(100vh - 4.895rem);
+    height: calc(100vh - 4.8rem);
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }

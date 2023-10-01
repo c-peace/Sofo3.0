@@ -1,19 +1,20 @@
-#routineSet {
+#exportSet {
     display: flex;
 }
 
-#routineSetBox {
+#exportSetBox {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    border: 1px solid #0038FF;
     border-radius: 14px;
     width: 54px;
-    height: 130px;
+    height: 180px;
+    box-shadow:inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    background-color: #F0F0F0;
 }
 
-#routineSetItem {
+#exportSetItem {
     background-color: transparent;
     padding: 6px 4px;
     border-radius: 10px;
@@ -22,21 +23,20 @@
     color: black;
 }
 
-#routineSetItem:hover {
-    background-color: rgb(231, 231, 231);
+#exportSetItem:hover {
+    background-color: rgb(211, 211, 211);
 }
 
-#routineSetInfo {
+#exportSetInfo {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    align-items: baseline;
-    margin-left: 10px;
-    border: 1px solid transparent;
-    height: 130px;
+    align-items: end;
+    margin-right: 10px;
+    height: 180px;;
 }
 
-#RoutineSetInfoItem {
+#exportSetInfoItem {
     font-size: .9rem;
     font-weight: lighter;
     padding: 6px 0px;
