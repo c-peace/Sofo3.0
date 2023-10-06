@@ -4,7 +4,7 @@ import CanvasBtnR from '/workspaces/Sofo3.0/src/features/canvasBtnR/CanvasBtnR.j
 
 export default function WorkLayer() {
   return (
-    <div id='workLayer' style={{position:'absolute', display:'flex', flexDirection:'row'}}>
+    <div id='workLayer' style={{position:'absolute', display:'flex', flexDirection:'row', zIndex:1}}>
       <Slide />
       <Canvas />
       <CanvasBtnR />
