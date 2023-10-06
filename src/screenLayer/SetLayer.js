@@ -3,12 +3,12 @@ import RoutineSet from "../features/routineSet/RoutineSet";
 import Guide from "../features/guide/Guide";
 import './SetLayer.css'
 
-export default function SetLayer() {
+export default function SetLayer({isRotated, setRotated}) {
     return (
         <div id="setLayer">
             <RoutineSet />
             <Guide />
-            <ExportSet />
+            <ExportSet isRotated={isRotated} setRotated={setRotated}/>
         </div>
     );
 }

@@ -1,6 +1,8 @@
 :root {
     --size-canvasWidth: calc(88vh / 842 * 595);
     --size-canvasHeight: calc(88vh);
+    --size-canvasRotatedWidth: calc(88vh / 842 * 1190);
+    --size-canvasRotatedHeight: calc(88vh);
 }
 
 #canvasLayerBox {

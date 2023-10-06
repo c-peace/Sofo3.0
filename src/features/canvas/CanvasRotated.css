@@ -1,0 +1,6 @@
+#canvasRotated {
+    border-radius: 10px;
+    border: 2px solid #333333;
+    width: var(--size-canvasRotatedWidth);
+    height: var(--size-canvasRotatedHeight);
+}
