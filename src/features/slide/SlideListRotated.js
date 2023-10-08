@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import './SlideListRotated.css'
 import image from '/workspaces/Sofo3.0/src/assets/defaultSheet.png';
 
