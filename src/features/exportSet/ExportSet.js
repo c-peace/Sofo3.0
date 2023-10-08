@@ -1,9 +1,8 @@
-import { useState } from 'react';
 import './ExportSet.css'
 
 export default function ExportSet({ isRotated, setRotated }) {
     return (
-        <div id='exportSet'>
+        <div id='exportSet' style={{zIndex:`${isRotated ? 2 : 0}`}}>
             <ExportSetInfo />
             <ExportSetBox isRotated={isRotated} setRotated={setRotated} />
         </div>

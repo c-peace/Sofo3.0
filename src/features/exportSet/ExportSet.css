@@ -1,5 +1,6 @@
 #exportSet {
     display: flex;
+    background-color: transparent;
 }
 
 #exportSetBox {
@@ -42,6 +43,7 @@
 }
 
 #exportSetInfo {
+    background-color: transparent;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -51,6 +53,7 @@
 }
 
 #exportSetInfoItem {
+    background-color: transparent;
     font-size: .9rem;
     font-weight: lighter;
     padding: 6px 0px;

@@ -9,12 +9,12 @@ export default function WorkLayer({ isRotated }) {
 
   return (
     <div id='workLayer'>
-      <IsRotatedLayer isRotated={isRotated} />
+      <IsRotatedCanvasLayer isRotated={isRotated} />
     </div>
   );
 }
 
-function IsRotatedLayer({ isRotated }) {
+function IsRotatedCanvasLayer({ isRotated }) {
   if (isRotated) {
     return <>
       <SlideListRotated />

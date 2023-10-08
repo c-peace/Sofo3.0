@@ -6,9 +6,20 @@ import './SetLayer.css'
 export default function SetLayer({isRotated, setRotated}) {
     return (
         <div id="setLayer">
-            <RoutineSet />
-            <Guide />
+            <IsRotatedSetLayer isRotated={isRotated} />
             <ExportSet isRotated={isRotated} setRotated={setRotated}/>
         </div>
     );
 }
+
+function IsRotatedSetLayer({ isRotated }) {
+    if (isRotated) {
+      return <div></div>;
+  
+    } else {
+      return <>
+            <RoutineSet />
+            <Guide />
+      </>;
+    }
+  }
