@@ -1,16 +1,16 @@
 import { useState } from 'react';
 import './ExportSet.css'
 
-export default function ExportSet({isRotated, setRotated}) {
+export default function ExportSet({ isRotated, setRotated }) {
     return (
         <div id='exportSet'>
             <ExportSetInfo />
-            <ExportSetBox isRotated={isRotated} setRotated={setRotated}/>
+            <ExportSetBox isRotated={isRotated} setRotated={setRotated} />
         </div>
     );
 }
 
-function ExportSetBox({isRotated, setRotated}) {
+function ExportSetBox({ isRotated, setRotated }) {
     return (
         <div id='exportSetBox'>
             <RotationSet isRotated={isRotated} setRotated={setRotated} />
@@ -20,10 +20,8 @@ function ExportSetBox({isRotated, setRotated}) {
     );
 }
 
-function RotationSet({isRotated, setRotated}) {
-    const [rotatedeg, setRotatedeg] = useState(0);
-
-    return <i id='rotationSet' className='icon-doc' style={{transform: `rotate(${rotatedeg}deg)`}} onClick={() => {setRotated(!isRotated); setRotatedeg(isRotated ? 0 : -90)}}></i>
+function RotationSet({ isRotated, setRotated }) {
+    return <i id='rotationSet' className='icon-doc' style={{ transform: `rotate(${isRotated ? -90 : 0}deg)` }} onClick={() => { setRotated(!isRotated); }}></i>
 }
 
 function ExportSetItem({ name }) {

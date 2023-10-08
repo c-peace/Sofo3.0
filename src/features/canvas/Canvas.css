@@ -5,8 +5,8 @@
     --size-canvasRotatedHeight: calc(88vh);
 }
 
-#canvasLayerBox {
+#canvasBox {
     position: relative;
-    width: var(--size-canvasHeight);
+    width: var(--size-canvasWidth);
     height: var(--size-canvasHeight);
 }

@@ -3,10 +3,12 @@ import Canvas from '/workspaces/Sofo3.0/src/features/canvas/Canvas.js';
 import CanvasBtnR from '/workspaces/Sofo3.0/src/features/canvasBtnR/CanvasBtnR.js';
 import CanvasRotated from '../features/canvas/CanvasRotated';
 import SlideListRotated from '../features/slide/SlideListRotated';
+import './WorkLayer.css'
 
 export default function WorkLayer({ isRotated }) {
+
   return (
-    <div id='workLayer' style={{ position: 'absolute', display: 'flex', flexDirection: 'row', zIndex: 1, backgroundColor: 'transparent' }}>
+    <div id='workLayer'>
       <IsRotatedLayer isRotated={isRotated} />
     </div>
   );
