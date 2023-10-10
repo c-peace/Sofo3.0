@@ -1,22 +1,26 @@
 import './ExportSet.css'
 
-export default function ExportSet() {
+export default function ExportSet({ isRotated, setRotated }) {
     return (
-        <div id='exportSet'>
+        <div id='exportSet' style={{zIndex:`${isRotated ? 2 : 0}`}}>
             <ExportSetInfo />
-            <ExportSetBox />
+            <ExportSetBox isRotated={isRotated} setRotated={setRotated} />
         </div>
     );
 }
 
-function ExportSetBox() {
+function ExportSetBox({ isRotated, setRotated }) {
     return (
         <div id='exportSetBox'>
-            <ExportSetItem name={'icon-doc'} />
+            <RotationSet isRotated={isRotated} setRotated={setRotated} />
             <ExportSetItem name={'icon-print'} />
             <ExportSetItem name={'icon-download'} />
         </div>
     );
+}
+
+function RotationSet({ isRotated, setRotated }) {
+    return <i id='rotationSet' className='icon-doc' style={{ transform: `rotate(${isRotated ? -90 : 0}deg)` }} onClick={() => { setRotated(!isRotated); }}></i>
 }
 
 function ExportSetItem({ name }) {

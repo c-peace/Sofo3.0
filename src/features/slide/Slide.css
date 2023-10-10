@@ -1,10 +1,13 @@
 :root {
     --size-slideWidth: calc(88vh / 842 * 118);
     --size-slideHeight: calc(88vh / 842 * 167);
+    --size-slideRotatedWidth: calc(88vh / 842 * 191);
+    --size-slideRotatedHeight: calc(88vh / 842 * 136);
 }
 
 #slideBox {
     display: flex;
     flex-flow: column;
     margin-right: 10px;
+    animation: smoothOpacity 600ms ease-in-out;
 }

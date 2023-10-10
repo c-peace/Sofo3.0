@@ -1,0 +1,6 @@
+#workLayer {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    z-index: 1;
+}

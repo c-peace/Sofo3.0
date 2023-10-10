@@ -1,0 +1,5 @@
+#canvasRotated {
+    width: var(--size-canvasRotatedWidth);
+    height: var(--size-canvasRotatedHeight);
+    background-color: white;
+}

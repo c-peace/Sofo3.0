@@ -1,0 +1,43 @@
+/* about Slidebox */
+#listRotatedView {
+    width: var(--size-slideRotatedWidth);
+    height: var(--size-canvasRotatedHeight);
+    overflow-y: scroll;
+    padding: 6px;
+    animation: smoothSlide 1000ms ease-in-out;
+}
+
+#listRotatedView::-webkit-scrollbar {
+    width: 4px;
+}
+
+#listRotatedView::-webkit-scrollbar-thumb {
+    background: linear-gradient(var(--color-beige-dark),#fc5050);
+    border-radius: 25px;
+}
+
+#listRotatedView img {
+    width: var(--size-slideRotatedWidth);
+    height: var(--size-slideRotatedHeight);
+    margin-bottom: 20px;
+    border-radius: 6px;
+    box-sizing: border-box;
+    border: 2px solid gray;
+    transition: all 100ms;
+}
+
+#listRotatedView img:hover {
+    border: 2px solid #fc5050;
+    transform: scale(98%);
+    box-shadow: 0px 0px 0px 2px transparent;
+}
+
+@keyframes smoothSlide {
+    from {
+        transform: translateX(var(--size-slideRotatedWidth));
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
