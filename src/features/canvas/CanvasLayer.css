@@ -1,7 +1,20 @@
+#canvasLayerBox {
+    animation: smoothOpacity 600ms ease-in-out;
+    background-color: white;
+}
+
+@keyframes smoothOpacity {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
 /* canvas */
 canvas {
-    border-radius: 10px;
-    border: 2px solid #333333;
     width: var(--size-canvasWidth);
     height: var(--size-canvasHeight);
 }
@@ -14,7 +27,6 @@ canvas {
 
 #canvasMain {
     background-color: white;
-    box-shadow: 0px 6px 4px #00000050;
     z-index: 0;
 }
 

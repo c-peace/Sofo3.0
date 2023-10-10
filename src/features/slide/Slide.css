@@ -9,4 +9,5 @@
     display: flex;
     flex-flow: column;
     margin-right: 10px;
+    animation: smoothOpacity 600ms ease-in-out;
 }
