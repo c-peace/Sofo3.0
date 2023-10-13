@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/Sofo3.0/static/css/main.4037c9aa.css",
+    "main.js": "/Sofo3.0/static/js/main.f2483287.js",
+    "static/js/496.0320d045.chunk.js": "/Sofo3.0/static/js/496.0320d045.chunk.js",
+    "static/media/defaultSheet.png": "/Sofo3.0/static/media/defaultSheet.048348fc93741f1a1e70.png",
+    "static/media/fontello.eot?56431239": "/Sofo3.0/static/media/fontello.0756c741d729721ca2db.eot",
+    "static/media/fontello.svg?56431239": "/Sofo3.0/static/media/fontello.c34b4e256bf13ccd35d5.svg",
+    "index.html": "/Sofo3.0/index.html",
+    "main.4037c9aa.css.map": "/Sofo3.0/static/css/main.4037c9aa.css.map",
+    "main.f2483287.js.map": "/Sofo3.0/static/js/main.f2483287.js.map",
+    "496.0320d045.chunk.js.map": "/Sofo3.0/static/js/496.0320d045.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4037c9aa.css",
+    "static/js/main.f2483287.js"
+  ]
+}
