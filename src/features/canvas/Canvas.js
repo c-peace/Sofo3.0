@@ -1,7 +1,8 @@
 import './Canvas.css';
 import CanavasLayer from './CanvasLayer';
-import DrawBtn from './DrawBtn';
+import DrawBtnLayer from './DrawBtnLayer';
 import CanvasRotated from './CanvasRotated';
+import { useRef } from 'react';
 
 export default function Canavas({ isRotated }) {
     return (
@@ -12,12 +13,15 @@ export default function Canavas({ isRotated }) {
 }
 
 function IsRotatedCanvas({ isRotated }) {
+
+    const canvasMainRef = useRef(null);
+
     if (isRotated) {
         return <CanvasRotated />;
     } else {
         return <>
-            <DrawBtn />
-            <CanavasLayer />
+            <DrawBtnLayer ref={canvasMainRef}/>
+            <CanavasLayer ref={canvasMainRef}/>
         </>;
     }
 }

@@ -1,14 +1,13 @@
-import { useEffect, useRef, useState } from 'react';
+import { forwardRef, useEffect, useRef, useState } from 'react';
 import defaultSheet from "/workspaces/Sofo3.0/src/assets/defaultSheet.png";
 import './CanvasLayer.css'
 
 const CANVAS = { width: 1190, height: 1684 };
 
 
-export default function CanavasLayer() {
-
+const CanvasLayer = forwardRef(function CanavasLayer(props, ref) {
+    const canvasMainRef = ref;
     const canvasFlagRef = useRef();
-    const canvasMainRef = useRef();
     const canvasSubmitRef = useRef();
     const [flags, setFlags] = useState([]);
 
@@ -17,9 +16,7 @@ export default function CanavasLayer() {
         const ctxMain = canvasMain.getContext('2d');
         canvasMain.width = CANVAS.width;
         canvasMain.height = CANVAS.height;
-
-        drawDefaultSheet(ctxMain);
-
+        drawDefaultSheet(ctxMain)
 
         setFlags([{
             x: Math.floor(Math.random() * 951) + 120,
@@ -103,4 +100,7 @@ export default function CanavasLayer() {
             rect(ctxFlag, flags[i]);
         }
     }
-}
+});
+
+
+export default CanvasLayer;

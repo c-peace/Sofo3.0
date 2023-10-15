@@ -1,24 +1,10 @@
-import './DrawBtn.css';
+import './DrawBtns.css';
 
-export default function DrawBtn() {
-    return (
-        <div id='btnBox'>
-            <InputNum defaultValue={1} />
-            <DropDownKey />
-            <InputTempo defaultValue={110} />
-            <BtnInfo />
-            <DropDownSongform />
-            <UploadImage />
-            <DropDownFlag />
-        </div>
-    );
-}
-
-function InputNum({ defaultValue }) {
+export function InputNum({ defaultValue }) {
     return <input type="number" className="canvasBtn btn_input" id="info_num" min="1" max="20" inputMode='numeric' defaultValue={defaultValue} ></input>;
 }
 
-function DropDownKey() {
+export function DropDownKey() {
     return <div className="canvasBtn dropdown" id="info_key">
 
         <div className="dropdown-content-row">
@@ -58,15 +44,15 @@ function DropDownKey() {
     </div>;
 }
 
-function InputTempo({ defaultValue }) {
+export function InputTempo({ defaultValue }) {
     return <input type="number" className="canvasBtn btn_input" id="info_tempo" min="40" max="240" inputMode='numeric' defaultValue={defaultValue}></input>;
 }
 
-function BtnInfo() {
+export function BtnInfo() {
     return <div className="canvasBtn" id="info_sheet"></div>;
 }
 
-function DropDownSongform() {
+export function DropDownSongform() {
     return <div className="canvasBtn dropdown" id="songform">
         <div className="dropdown-content-row">
             <option className="option-row-big" value="In" title="Intro" >In</option>
@@ -81,7 +67,7 @@ function DropDownSongform() {
     </div>;
 }
 
-function UploadImage() {
+export function UploadImage() {
     const style = { input: { display: 'none' } };
 
     return <label htmlFor='upload'>
@@ -90,7 +76,7 @@ function UploadImage() {
     </label>;
 }
 
-function DropDownFlag() {
+export function DropDownFlag() {
     return <div className="dropdown canvasBtn" id="flag">
         Flag
         <div className="dropdown-content-column">
