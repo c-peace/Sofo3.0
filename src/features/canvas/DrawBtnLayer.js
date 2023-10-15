@@ -38,6 +38,10 @@ const DrawBtnLayer = forwardRef(function DrawBtn(props, ref) {
                 mainCanvasDraw.drawSongform(songformList, value);
                 break;
 
+            case 'eraseSongform':
+                mainCanvasDraw.eraseSongform(songformList);
+                break;
+
             case 'image':
                 mainCanvasDraw.searchImage(event, imageRef);
                 break;
