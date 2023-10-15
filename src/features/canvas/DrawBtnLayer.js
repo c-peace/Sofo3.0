@@ -1,11 +1,13 @@
-import { forwardRef, useEffect, useState } from 'react';
+import { forwardRef, useEffect, useRef, useState } from 'react';
 import { InputNum, DropDownKey, InputTempo, BtnInfo, DropDownSongform, UploadImage, DropDownFlag } from './DrawBtns';
 import MainCanvasDraw from '../../controls/mainCanvasDraw';
 import './DrawBtnLayer.css';
 
 const DrawBtnLayer = forwardRef(function DrawBtn(props, ref) {
     const canvasMainRef = ref;
+    const imageRef = useRef();
     const [ctx, setCtx] = useState();
+    const songformList = [];
     const mainCanvasDraw = new MainCanvasDraw(ctx);
 
     useEffect(() => {
@@ -14,18 +16,46 @@ const DrawBtnLayer = forwardRef(function DrawBtn(props, ref) {
         setCtx(context);
     }, [])
 
-    function btnControls() {
+    function btnControls(trigger, value = '', event = '') {
+        switch (trigger) {
+            case 'num':
+                mainCanvasDraw.drawNum(value);
+                break;
+
+            case 'key':
+                mainCanvasDraw.drawKey(value);
+                break;
+
+            case 'tempo':
+                mainCanvasDraw.drawTempo(value);
+                break;
+
+            case 'info':
+                mainCanvasDraw.inputInfo();
+                break;
+
+            case 'songform':
+                mainCanvasDraw.drawSongform(songformList, value);
+                break;
+
+            case 'image':
+                mainCanvasDraw.searchImage(event, imageRef);
+                break;
+
+            case 'flag':
+                break;
+        }
 
     }
 
     return (
         <div id='btnBox'>
-            <InputNum defaultValue={1} />
-            <DropDownKey />
-            <InputTempo defaultValue={110} />
-            <BtnInfo />
-            <DropDownSongform />
-            <UploadImage />
+            <InputNum defaultValue={1} btnControls={btnControls} />
+            <DropDownKey btnControls={btnControls} />
+            <InputTempo defaultValue={110} btnControls={btnControls} />
+            <BtnInfo btnControls={btnControls} />
+            <DropDownSongform btnControls={btnControls} />
+            <UploadImage ref={imageRef} btnControls={btnControls} />
             <DropDownFlag />
         </div>
     );
