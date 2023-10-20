@@ -90,18 +90,18 @@ export const UploadImage = forwardRef(function UploadImage({ btnControls }, ref)
     </label>;
 });
 
-export function DropDownFlag() {
+export function DropDownFlag({ btnControls }) {
     return <div className="dropdown canvasBtn" id="flag">
         Flag
         <div className="dropdown-content-column">
-            <option className="option-column" value="In" title="Intro" >In</option>
-            <option className="option-column" value="A" title="A part" >A</option>
-            <option className="option-column" value="B" title="B part" >B</option>
-            <option className="option-column" value="I" title="Interlude" >I</option>
-            <option className="option-column" value="C" title="C part" >C</option>
-            <option className="option-column" value="D" title="D part" >D</option>
-            <option className="option-column" value="O" title="Outro" >O</option>
-            <option className="option-column" title="Reset" >Back</option>
+            <option className="option-column" title="Intro" onClick={() => btnControls('flag', 'In')}>In</option>
+            <option className="option-column" title="A part" onClick={() => btnControls('flag', 'A')}>A</option>
+            <option className="option-column" title="B part" onClick={() => btnControls('flag', 'B')}>B</option>
+            <option className="option-column" title="Interlude" onClick={() => btnControls('flag', 'I')}>I</option>
+            <option className="option-column" title="C part" onClick={() => btnControls('flag', 'C')}>C</option>
+            <option className="option-column" title="D part" onClick={() => btnControls('flag', 'D')}>D</option>
+            <option className="option-column" title="Outro" onClick={() => btnControls('flag', 'O')}>O</option>
+            <option className="option-column" title="Reset" onClick={() => btnControls('eraseFlag')}>Back</option>
         </div>
     </div>;
 }

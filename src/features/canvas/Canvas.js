@@ -2,7 +2,7 @@ import './Canvas.css';
 import CanavasLayer from './CanvasLayer';
 import DrawBtnLayer from './DrawBtnLayer';
 import CanvasRotated from './CanvasRotated';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 
 export default function Canavas({ isRotated }) {
     return (
@@ -14,14 +14,19 @@ export default function Canavas({ isRotated }) {
 
 function IsRotatedCanvas({ isRotated }) {
 
-    const canvasMainRef = useRef(null);
+    const canvasRef = {
+        canvasMainRef : useRef(null),
+        canvasFlagRef : useRef(null)
+    };
+
+    const [listFlag, setListFlag] = useState([]);
 
     if (isRotated) {
         return <CanvasRotated />;
     } else {
         return <>
-            <DrawBtnLayer ref={canvasMainRef}/>
-            <CanavasLayer ref={canvasMainRef}/>
+            <DrawBtnLayer listFlag={listFlag} ref={canvasRef}/>
+            <CanavasLayer listFlag={listFlag} setListFlag={setListFlag} ref={canvasRef}/>
         </>;
     }
 }
