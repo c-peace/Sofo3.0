@@ -2,18 +2,28 @@ import { forwardRef, useEffect, useRef, useState } from 'react';
 import { InputNum, DropDownKey, InputTempo, BtnInfo, DropDownSongform, UploadImage, DropDownFlag } from './DrawBtns';
 import MainCanvasDraw from '../../controls/mainCanvasDraw';
 import './DrawBtnLayer.css';
+import FlagCanvasDraw from '../../controls/flagCanvasDraw';
 
-const DrawBtnLayer = forwardRef(function DrawBtn(props, ref) {
-    const canvasMainRef = ref;
+const DrawBtnLayer = forwardRef(function DrawBtn({listFlag}, ref) {
+    const { canvasMainRef, canvasFlagRef } = ref;
     const imageRef = useRef();
-    const [ctx, setCtx] = useState();
-    const songformList = [];
-    const mainCanvasDraw = new MainCanvasDraw(ctx);
+
+    const [ctxMain, setCtxMain] = useState();
+    const [ctxFlag, setCtxFlag] = useState();
+
+    const listSongform = [];
+
+    const mainCanvasDraw = new MainCanvasDraw(ctxMain);
+    const flagCanvasDraw = new FlagCanvasDraw(ctxFlag);
 
     useEffect(() => {
-        const canvas = canvasMainRef.current;
-        const context = canvas.getContext('2d');
-        setCtx(context);
+        const canvasMain = canvasMainRef.current;
+        const contextMain = canvasMain.getContext('2d');
+        setCtxMain(contextMain);
+
+        const canvasFlag = canvasFlagRef.current;
+        const contextFlag = canvasFlag.getContext('2d');
+        setCtxFlag(contextFlag);
     }, [])
 
     function btnControls(trigger, value = '', event = '') {
@@ -35,11 +45,11 @@ const DrawBtnLayer = forwardRef(function DrawBtn(props, ref) {
                 break;
 
             case 'songform':
-                mainCanvasDraw.drawSongform(songformList, value);
+                mainCanvasDraw.drawSongform(listSongform, value);
                 break;
 
             case 'eraseSongform':
-                mainCanvasDraw.eraseSongform(songformList);
+                mainCanvasDraw.eraseSongform(listSongform);
                 break;
 
             case 'image':
@@ -47,6 +57,10 @@ const DrawBtnLayer = forwardRef(function DrawBtn(props, ref) {
                 break;
 
             case 'flag':
+                flagCanvasDraw.createFlag(value, listFlag);
+                break;
+            case 'eraseFlag':
+                flagCanvasDraw.eraseFlag(listFlag);
                 break;
         }
 
@@ -60,7 +74,7 @@ const DrawBtnLayer = forwardRef(function DrawBtn(props, ref) {
             <BtnInfo btnControls={btnControls} />
             <DropDownSongform btnControls={btnControls} />
             <UploadImage ref={imageRef} btnControls={btnControls} />
-            <DropDownFlag />
+            <DropDownFlag btnControls={btnControls}/>
         </div>
     );
 });
