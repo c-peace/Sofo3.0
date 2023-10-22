@@ -1,4 +1,5 @@
 import MainCanvasData from "./mainCanvasData";
+import defaultSheet from "/workspaces/Sofo3.0/src/assets/defaultSheet.png";
 
 export default class MainCanvasDraw {
     #ctx;
@@ -6,6 +7,14 @@ export default class MainCanvasDraw {
     #canvasHeight = 1684;
     constructor(ctx) {
         this.#ctx = ctx;
+    }
+
+    static defaultSet(ctx) {
+        const image = new Image();
+        image.src = defaultSheet;
+        image.onload = function () {
+            ctx.drawImage(image, 0, 0);
+        }
     }
 
     searchImage(event, targetRef) {
