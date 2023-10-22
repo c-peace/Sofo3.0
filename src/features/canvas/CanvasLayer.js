@@ -1,40 +1,19 @@
-import { forwardRef, useEffect, useRef, useState } from 'react';
+import { forwardRef, useRef, useState } from 'react';
 import './CanvasLayer.css'
 import FlagCanvasDraw from '../../controls/flagCanvasDraw';
-import MainCanvasDraw from '../../controls/mainCanvasDraw';
-
-const CANVAS = { width: 1190, height: 1684 };
 
 
-const CanvasLayer = forwardRef(function CanavasLayer({listFlag, setListFlag}, ref) {
+const CanvasLayer = forwardRef(function CanavasLayer({listFlag, setListFlag, ctxFlag}, ref) {
     const { canvasMainRef, canvasFlagRef } = ref;
     const canvasSubmitRef = useRef();
 
-    const [ctxFlag, setCtxFlag] = useState();
+
     const [dragok, setDragok] = useState(false);
     const [startX, setStartX] = useState();
     const [startY, setStartY] = useState();
     const flagCanvasDraw = new FlagCanvasDraw(ctxFlag);
 
-    function drawDefaultSetting(ctxMain) {
-        MainCanvasDraw.defaultSet(ctxMain);
-    }
 
-    useEffect(() => {
-        const canvasMain = canvasMainRef.current;
-        const ctxMain = canvasMain.getContext('2d');
-        canvasMain.width = CANVAS.width;
-        canvasMain.height = CANVAS.height;
-
-        const canvasFlag = canvasFlagRef.current;
-        const ctxFlag = canvasFlag.getContext('2d');
-        canvasFlag.width = CANVAS.width;
-        canvasFlag.height = CANVAS.height;
-        
-        setCtxFlag(ctxFlag);
-        drawDefaultSetting(ctxMain);
-
-    }, []);
 
     const mouseDown = (e) => {
         flagCanvasDraw.myDown(e, dragok, setDragok, listFlag, setListFlag, setStartX, setStartY);
