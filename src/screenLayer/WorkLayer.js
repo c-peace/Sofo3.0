@@ -1,6 +1,6 @@
-import Slide from '/workspaces/Sofo3.0/src/features/slide/Slide.js';
-import Canvas from '/workspaces/Sofo3.0/src/features/canvas/Canvas.js';
-import CanvasBtnR from '/workspaces/Sofo3.0/src/features/canvasBtnR/CanvasBtnR.js';
+import Slide from '../features/slide/Slide.js';
+import Canvas from '../features/canvas/Canvas.js';
+import CanvasBtnR from '../features/canvasBtnR/CanvasBtnR.js';
 import SlideListRotated from '../features/slide/SlideListRotated';
 import './WorkLayer.css'
 
@@ -13,7 +13,7 @@ export default function WorkLayer({ isRotated }) {
   );
 }
 
-function IsRotatedWorkLayer({ isRotated }) {
+function IsRotatedWorkLayer({ isRotated }) { 
   if (isRotated) {
     return <>
       <SlideListRotated />

@@ -1,5 +1,5 @@
 import MainCanvasData from "./mainCanvasData";
-import defaultSheet from "/workspaces/Sofo3.0/src/assets/defaultSheet.png";
+import defaultSheet from "../assets/defaultSheet.png";
 
 export default class MainCanvasDraw {
     #ctx;
@@ -35,7 +35,7 @@ export default class MainCanvasDraw {
         const canvasHeight = this.#canvasHeight;
 
         // clearImage를 onload안에 넣는 법을 찾아야함.
-        const clearImage = this.#clearImage();
+        // const clearImage = this.#clearImage();
 
         const image = new Image();
         image.src = url;
@@ -153,6 +153,6 @@ export default class MainCanvasDraw {
         this.#resetMusicData(numRef, keyRef, tempoRef);
     }
 
-    get mainCanvas() { }
+    // get mainCanvas() { }
 
 }

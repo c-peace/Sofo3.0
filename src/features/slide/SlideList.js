@@ -1,5 +1,5 @@
 import './SlideList.css'
-import image from '/workspaces/Sofo3.0/src/assets/defaultSheet.png';
+import image from '../../assets/defaultSheet.png';
 
 export default function SlideList() {
     return (
