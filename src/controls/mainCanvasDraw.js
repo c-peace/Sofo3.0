@@ -1,4 +1,5 @@
 import MainCanvasData from "./mainCanvasData";
+import defaultSheet from "../assets/defaultSheet.png";
 
 export default class MainCanvasDraw {
     #ctx;
@@ -6,6 +7,14 @@ export default class MainCanvasDraw {
     #canvasHeight = 1684;
     constructor(ctx) {
         this.#ctx = ctx;
+    }
+
+    static defaultSet(ctx) {
+        const image = new Image();
+        image.src = defaultSheet;
+        image.onload = function () {
+            ctx.drawImage(image, 0, 0);
+        }
     }
 
     searchImage(event, targetRef) {
@@ -26,7 +35,7 @@ export default class MainCanvasDraw {
         const canvasHeight = this.#canvasHeight;
 
         // clearImage를 onload안에 넣는 법을 찾아야함.
-        const clearImage = this.#clearImage();
+        // const clearImage = this.#clearImage();
 
         const image = new Image();
         image.src = url;
@@ -144,6 +153,6 @@ export default class MainCanvasDraw {
         this.#resetMusicData(numRef, keyRef, tempoRef);
     }
 
-    get mainCanvas() { }
+    // get mainCanvas() { }
 
 }
