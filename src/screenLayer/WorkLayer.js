@@ -3,28 +3,31 @@ import Canvas from '../features/canvas/Canvas.js';
 import CanvasBtnR from '../features/canvasBtnR/CanvasBtnR.js';
 import SlideListRotated from '../features/slide/SlideListRotated';
 import './WorkLayer.css'
+import canvasStore from "../stateManage/canvasStore.js"
 
-export default function WorkLayer({ isRotated }) {
+export default function WorkLayer() {
 
   return (
     <div id='workLayer'>
-      <IsRotatedWorkLayer isRotated={isRotated} />
+      <IsRotatedWorkLayer />
     </div>
   );
 }
 
-function IsRotatedWorkLayer({ isRotated }) { 
+function IsRotatedWorkLayer() {
+  const {isRotated} = canvasStore();
+
   if (isRotated) {
     return <>
       <SlideListRotated />
-      <Canvas isRotated={isRotated} />
+      <Canvas />
       <div style={{ width: 'var(--size-slideRotatedWidth)', backgroundColor: 'transparent' }}></div>
     </>;
 
   } else {
     return <>
       <Slide />
-      <Canvas isRotated={isRotated} />
+      <Canvas />
       <CanvasBtnR />
     </>;
   }

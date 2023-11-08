@@ -1,26 +1,30 @@
 import './ExportSet.css'
+import canvasStore from '../../stateManage/canvasStore';
 
-export default function ExportSet({ isRotated, setRotated }) {
+export default function ExportSet() {
+    const {isRotated} = canvasStore()
+
     return (
         <div id='exportSet' style={{zIndex:`${isRotated ? 2 : 0}`}}>
             <ExportSetInfo />
-            <ExportSetBox isRotated={isRotated} setRotated={setRotated} />
+            <ExportSetBox  />
         </div>
     );
 }
 
-function ExportSetBox({ isRotated, setRotated }) {
+function ExportSetBox() {
     return (
         <div id='exportSetBox'>
-            <RotationSet isRotated={isRotated} setRotated={setRotated} />
+            <RotationSet  />
             <ExportSetItem name={'icon-print'} />
             <ExportSetItem name={'icon-download'} />
         </div>
     );
 }
 
-function RotationSet({ isRotated, setRotated }) {
-    return <i id='rotationSet' className='icon-doc' style={{ transform: `rotate(${isRotated ? -90 : 0}deg)` }} onClick={() => { setRotated(!isRotated); }}></i>
+function RotationSet() {
+    const {isRotated, reverseRotated} = canvasStore();
+    return <i id='rotationSet' className='icon-doc' style={{ transform: `rotate(${isRotated ? -90 : 0}deg)` }} onClick={() => reverseRotated()}></i>
 }
 
 function ExportSetItem({ name }) {
