@@ -91,9 +91,8 @@ export default class MainCanvasDraw {
         ctx.fillText('Tempo = ' + value, 440, 73);
     }
 
-    #resetMusicData(numRef, keyRef, tempoRef) {
+    #resetMusicData(numRef, tempoRef) {
         MainCanvasData.resetNumValue(numRef);
-        MainCanvasData.resetKeyValue(keyRef);
         MainCanvasData.resetTempoValue(tempoRef);
     }
 
@@ -137,7 +136,7 @@ export default class MainCanvasDraw {
         ctx.fillText(listSongform.join(" - "), 595, 155);
     }
 
-    resetSongform(listSongform) {
+    #resetSongform(listSongform) {
         const ctx = this.#ctx;
         MainCanvasData.resetSongform(listSongform);
         ctx.fillStyle = 'white';
@@ -148,11 +147,8 @@ export default class MainCanvasDraw {
         ctx.fillText("In - A - B - I - A - B - B - C - D - O", 595, 155);
     }
 
-    resetMainCanvas(numRef, keyRef, tempoRef) {
-        this.drawImage('/workspaces/Sofo3.0/src/assets/defaultSheet.png');
-        this.#resetMusicData(numRef, keyRef, tempoRef);
+    resetMainCanvas(numRef, tempoRef, listSongform) {
+        this.#resetMusicData(numRef, tempoRef);
+        this.#resetSongform(listSongform);
     }
-
-    // get mainCanvas() { }
-
 }

@@ -6,11 +6,7 @@ import FlagCanvasDraw from '../../controls/flagCanvasDraw';
 import canvasStore from '../../stateManage/canvasStore';
 
 export default function DrawBtnLayer() {
-    const {ctxMain, ctxFlag, listFlag} = canvasStore();
-
-    const imageRef = useRef();
-
-    const listSongform = [];
+    const {ctxMain, ctxFlag, listFlag, listSongform, imageRef} = canvasStore();
 
     const mainCanvasDraw = new MainCanvasDraw(ctxMain);
     const flagCanvasDraw = new FlagCanvasDraw(ctxFlag);
@@ -50,6 +46,9 @@ export default function DrawBtnLayer() {
                 break;
             case 'eraseFlag':
                 flagCanvasDraw.eraseFlag(listFlag);
+                break;
+            default:
+                alert('Error(DrawBtnLayer.js) : trigger is not defined');
                 break;
         }
 

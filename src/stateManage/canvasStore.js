@@ -3,16 +3,24 @@ import { create } from 'zustand'
 
 const canvasStore = create((set) => ({
 
-  // Ref
+  // canvas Ref
   canvasMainRef: createRef(null),
   canvasFlagRef: createRef(null),
   canvasSubmitRef: createRef(null),
+
+  // btn Ref
+  numRef: createRef(null),
+  tempoRef: createRef(null),
+  imageRef: createRef(null),
 
   // Ctx
   ctxMain: null,
   ctxFlag: null,
   setCtxMain: (value) => set({ ctxMain: value }),
   setCtxFlag: (value) => set({ ctxFlag: value }),
+
+  // SongForm
+  listSongform: [],
 
   // Rotated
   isRotated: false,

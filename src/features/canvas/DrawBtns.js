@@ -1,15 +1,19 @@
 import { forwardRef } from 'react';
 import './DrawBtns.css';
+import canvasStore from '../../stateManage/canvasStore';
 
 export function InputNum({ defaultValue, btnControls }) {
+    const { numRef } = canvasStore();
+
     const onChangeNum = (e) => {
         btnControls('num', e.target.value);
     };
 
-    return <input type="number" className="canvasBtn btn_input" id="info_num" min="1" max="20" inputMode='numeric' defaultValue={defaultValue} onChange={onChangeNum}></input>;
+    return <input type="number" ref={numRef} className="canvasBtn btn_input" id="info_num" min="1" max="20" inputMode='numeric' defaultValue={defaultValue} onChange={onChangeNum}></input>;
 }
 
 export function DropDownKey({ btnControls }) {
+
     return <div className="canvasBtn dropdown" id="info_key">
 
         <div className="dropdown-content-row">
@@ -50,11 +54,13 @@ export function DropDownKey({ btnControls }) {
 }
 
 export function InputTempo({ defaultValue, btnControls }) {
+    const { tempoRef } = canvasStore();
+
     const onChangeTempo = (e) => {
         btnControls('tempo', e.target.value);
     };
 
-    return <input type="number" className="canvasBtn btn_input" id="info_tempo" min="40" max="240" inputMode='numeric' defaultValue={defaultValue} onChange={onChangeTempo}></input>;
+    return <input type="number" ref={tempoRef} className="canvasBtn btn_input" id="info_tempo" min="40" max="240" inputMode='numeric' defaultValue={defaultValue} onChange={onChangeTempo}></input>;
 }
 
 export function BtnInfo({ btnControls }) {
