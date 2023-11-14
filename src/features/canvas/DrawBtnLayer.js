@@ -1,4 +1,3 @@
-import { useRef } from 'react';
 import { InputNum, DropDownKey, InputTempo, BtnInfo, DropDownSongform, UploadImage, DropDownFlag } from './DrawBtns';
 import MainCanvasDraw from '../../controls/mainCanvasDraw';
 import './DrawBtnLayer.css';

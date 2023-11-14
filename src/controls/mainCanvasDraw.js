@@ -71,7 +71,7 @@ export default class MainCanvasDraw {
         const ctx = this.#ctx;
         ctx.beginPath();
         ctx.fillStyle = '#EAEAEA';
-        ctx.roundRect(168, 42, 124, 48);
+        ctx.roundRect(168, 42, 124, 48, 8);
         ctx.fill();
         ctx.textAlign = 'center';
         ctx.font = 'bold 24px Times';
