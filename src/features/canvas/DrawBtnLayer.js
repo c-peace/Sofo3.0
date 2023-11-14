@@ -3,8 +3,11 @@ import { InputNum, DropDownKey, InputTempo, BtnInfo, DropDownSongform, UploadIma
 import MainCanvasDraw from '../../controls/mainCanvasDraw';
 import './DrawBtnLayer.css';
 import FlagCanvasDraw from '../../controls/flagCanvasDraw';
+import canvasStore from '../../stateManage/canvasStore';
 
-export default function DrawBtn({ listFlag, ctxMain, ctxFlag }) {
+export default function DrawBtnLayer() {
+    const {ctxMain, ctxFlag, listFlag} = canvasStore();
+
     const imageRef = useRef();
 
     const listSongform = [];

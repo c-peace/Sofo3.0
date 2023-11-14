@@ -52,7 +52,6 @@ export default class FlagCanvasDraw {
     createFlag(flagName, listFlag) {
         FlagCanvasData.createFlagData(listFlag, flagName);
         this.#draw(listFlag);
-        // document.querySelector('#flag').value = 'flag';
     }
 
 
