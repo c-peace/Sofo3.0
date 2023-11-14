@@ -19,21 +19,21 @@ export default function CanavasLayer() {
         MainCanvasDraw.defaultSet(ctxMain);
     }
 
-    // useEffect(() => {
-    //     const canvasMain = canvasMainRef.current;
-    //     const ctxMain = canvasMain.getContext('2d');
-    //     canvasMain.width = CANVAS.width;
-    //     canvasMain.height = CANVAS.height;
+    useEffect(() => {
+        const canvasMain = canvasMainRef.current;
+        const ctxMain = canvasMain.getContext('2d');
+        setCtxMain(ctxMain);
+        canvasMain.width = CANVAS.width;
+        canvasMain.height = CANVAS.height;
 
-    //     const canvasFlag = canvasFlagRef.current;
-    //     const ctxFlag = canvasFlag.getContext('2d');
-    //     canvasFlag.width = CANVAS.width;
-    //     canvasFlag.height = CANVAS.height;
+        const canvasFlag = canvasFlagRef.current;
+        const ctxFlag = canvasFlag.getContext('2d');
+        setCtxFlag(ctxFlag);
+        canvasFlag.width = CANVAS.width;
+        canvasFlag.height = CANVAS.height;
 
-    //     setCtxFlag(ctxFlag);
-    //     setCtxMain(ctxMain);
-    //     drawDefaultSetting(ctxMain);
-    // });
+        drawDefaultSetting(ctxMain);
+    }, []);
 
     const mouseDown = (e) => {
         flagCanvasDraw.myDown(e, dragok, setDragok, listFlag, setListFlag, setStartX, setStartY);

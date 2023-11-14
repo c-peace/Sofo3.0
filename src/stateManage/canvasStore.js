@@ -1,15 +1,12 @@
-import { useRef } from 'react';
+import { createRef } from 'react';
 import { create } from 'zustand'
 
 const canvasStore = create((set) => ({
 
   // Ref
-  canvasMainRef: null,
-  canvasFlagRef: null,
-  canvasSubmitRef: null,
-  setCanvasMainRef: (value) => set({ canvasMainRef: value }),
-  setCanavsFlagRef: (value) => set({canvasFlagRef: value }),
-  setCanvasSubmitRef: (value) => set({ canvasSubmitRef: value }),
+  canvasMainRef: createRef(null),
+  canvasFlagRef: createRef(null),
+  canvasSubmitRef: createRef(null),
 
   // Ctx
   ctxMain: null,
@@ -24,8 +21,6 @@ const canvasStore = create((set) => ({
   // Flag
   listFlag: [],
   setListFlag: (value) => set({ listFlag: value }),
-  addListFlag: (newFlag) => set((state) => ({ listFlag: [...state.listFlag, newFlag] })),
-
 }))
 
 export default canvasStore;
