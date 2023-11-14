@@ -1,19 +1,15 @@
 export default class MainCanvasData {
 
     static resetImageValue(target) {
-        target.value = '';
+        target.current.value = '';
     }
 
     static resetNumValue(target) {
-        target.value = 1;
-    }
-
-    static resetKeyValue(target) {
-        target.value = 'C';
+        target.current.value = 1;
     }
 
     static resetTempoValue(target) {
-        target.value = 110;
+        target.current.value = 110;
     }
 
     static eraseSongform(list) {
