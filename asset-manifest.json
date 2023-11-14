@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/Sofo3.0/static/css/main.0e8720a6.css",
-    "main.js": "/Sofo3.0/static/js/main.40cfd9c2.js",
-    "static/js/496.0320d045.chunk.js": "/Sofo3.0/static/js/496.0320d045.chunk.js",
+    "main.css": "/Sofo3.0/static/css/main.7d74ed57.css",
+    "main.js": "/Sofo3.0/static/js/main.f0ee446f.js",
+    "static/js/496.a7406299.chunk.js": "/Sofo3.0/static/js/496.a7406299.chunk.js",
     "static/media/defaultSheet.png": "/Sofo3.0/static/media/defaultSheet.048348fc93741f1a1e70.png",
     "static/media/fontello.eot?56431239": "/Sofo3.0/static/media/fontello.0756c741d729721ca2db.eot",
     "static/media/fontello.svg?56431239": "/Sofo3.0/static/media/fontello.c34b4e256bf13ccd35d5.svg",
     "index.html": "/Sofo3.0/index.html",
-    "main.0e8720a6.css.map": "/Sofo3.0/static/css/main.0e8720a6.css.map",
-    "main.40cfd9c2.js.map": "/Sofo3.0/static/js/main.40cfd9c2.js.map",
-    "496.0320d045.chunk.js.map": "/Sofo3.0/static/js/496.0320d045.chunk.js.map"
+    "main.7d74ed57.css.map": "/Sofo3.0/static/css/main.7d74ed57.css.map",
+    "main.f0ee446f.js.map": "/Sofo3.0/static/js/main.f0ee446f.js.map",
+    "496.a7406299.chunk.js.map": "/Sofo3.0/static/js/496.a7406299.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.0e8720a6.css",
-    "static/js/main.40cfd9c2.js"
+    "static/css/main.7d74ed57.css",
+    "static/js/main.f0ee446f.js"
   ]
 }
