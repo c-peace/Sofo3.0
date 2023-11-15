@@ -148,6 +148,12 @@ export default class MainCanvasDraw {
     }
 
     resetMainCanvas(numRef, tempoRef, listSongform) {
+        const ctx = this.#ctx;
+        const image = new Image();
+        image.src = defaultSheet;
+        image.onload = function () {
+            ctx.drawImage(image, 0, 0);
+        }
         this.#resetMusicData(numRef, tempoRef);
         this.#resetSongform(listSongform);
     }
