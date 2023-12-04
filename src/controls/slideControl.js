@@ -46,10 +46,23 @@ export default class SlideControl {
         }
     };
 
+    // slide의 edit 변수를 변경해주는 함수
+    #editControl(index) {
+        const slides = this.#listSlide;
+        for (let i = 0; i < slides.length; i++) {
+            const slide = slides[i];
+            if (slide.edit) {
+                slides[i].edit = false;
+                break;
+            }
+        }
+
+        slides[index].edit = true;
+    };
+
     loadSlideToCanvas(index) {
-        // 원래 edit이 True였던 slide를 false로 바꾸는 작업이 필요함.
         const slide = this.#listSlide[index];
-        slide.edit = true;
+        this.#editControl(index);
         this.#mainCanvasDraw.bringMainCanvasData(slide.mainImage, this.#numRef, this.#tempoRef, slide.num, slide.tempo, this.#listSongform);
         this.#flagCanvasDraw.resetFlag(this.#listFlag);
         FlagCanvasData.bringFlagData(this.#listFlag, slide.flagList);
