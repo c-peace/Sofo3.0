@@ -7,9 +7,18 @@ const slideStore = create((set) => ({
     // Slide
     listSlide: [{
         id: 0,
-        mainImage: '',
+        mainImage: testSheet,
         submitImage: testSheet,
-        flagList: [],
+        flagList: [{
+            x: Math.floor(Math.random() * 951) + 120,
+            y: Math.floor(Math.random() * 100) + 1500,
+            width: 50,
+            height: 50,
+            strokeStyle: "red",
+            fillStyle: "white",
+            name: 'A',
+            isDragging: false
+        }],
         edit: true
     }],
 

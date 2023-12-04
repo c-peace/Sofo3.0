@@ -1,24 +1,19 @@
 import './SlideBtn.css'
-import defaultSheet from '../../assets/defaultSheet.png'
 import slideStore from '../../stateManage/slideStore';
+import SlideControl from '../../controls/slideControl';
 
 export default function SlideBtn() {
-    const { listSlide, setAddListSlide, setDelListSlide } = slideStore();
+    const { listSlide } = slideStore();
+    const slideControl = new SlideControl(listSlide);
 
     function slideHandler(trigger) {
         switch (trigger) {
             case 'add':
-                setAddListSlide({
-                    id: listSlide.length,
-                    mainImage: '',
-                    submitImage: defaultSheet,
-                    flagList: [],
-                    edit: true
-                });
+                slideControl.addSlide();
                 break;
 
             case 'del':
-                setDelListSlide();
+                slideControl.delSlide();
                 break;
 
             default:

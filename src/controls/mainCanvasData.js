@@ -1,3 +1,5 @@
+import canvasStore from "../stateManage/canvasStore";
+
 export default class MainCanvasData {
 
     static resetImageValue(target) {
@@ -10,6 +12,14 @@ export default class MainCanvasData {
 
     static resetTempoValue(target) {
         target.current.value = 110;
+    }
+
+    static bringNumValue(target, value) {
+        target.current.value = value;
+    }
+
+    static bringTempoValue(target, value) {
+        target.current.value = value;
     }
 
     static eraseSongform(list) {

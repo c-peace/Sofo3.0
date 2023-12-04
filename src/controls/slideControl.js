@@ -1,19 +1,67 @@
-import defaultSheet from "../assets/defaultSheet.png";
 import slideStore from "../stateManage/slideStore";
+import defaultSheet from "../assets/defaultSheet.png"
+import MainCanvasDraw from "./mainCanvasDraw";
+import FlagCanvasDraw from "./flagCanvasDraw";
+import canvasStore from "../stateManage/canvasStore"
+import FlagCanvasData from "./flagCanvasData";
 
 export default class SlideControl {
+    // Slide Data
+    #setAddListSlide = slideStore((state) => state.setAddListSlide);
+    #setDelListSlide = slideStore((state) => state.setDelListSlide);
+    #listSlide;
 
-    static addNewSlide(listSlide) {
-        listSlide.push({
-            id: listSlide.length,
+    // CanvasData
+    #ctxMain = canvasStore((state) => state.ctxMain);
+    #ctxFlag = canvasStore((state) => state.ctxFlag);
+    #numRef = canvasStore((state) => state.numRef);
+    #tempoRef = canvasStore((state) => state.tempoRef);
+    #listSongform = canvasStore((state) => state.listSongform);
+    #listFlag = canvasStore((state) => state.listFlag);
+    #setListFlag = canvasStore((state) => state.setListFlag);
+
+    #mainCanvasDraw = new MainCanvasDraw(this.#ctxMain);
+    #flagCanvasDraw = new FlagCanvasDraw(this.#ctxFlag);
+
+
+    constructor(listSlide) {
+        this.#listSlide = listSlide;
+    }
+
+    addSlide() {
+        this.#setAddListSlide({
+            id: this.#listSlide.length,
             mainImage: '',
             submitImage: defaultSheet,
             flagList: [],
             edit: true
         });
-
-        console.log(listSlide);
     };
+
+    delSlide() {
+        if (this.#listSlide.length === 1) {
+            alert('더 이상 슬라이드를 삭제할 수 없습니다.');
+        } else {
+            this.#setDelListSlide();
+        }
+    };
+
+    loadSlideToCanvas(index) {
+        // 원래 edit이 True였던 slide를 false로 바꾸는 작업이 필요함.
+        const slide = this.#listSlide[index];
+        slide.edit = true;
+        // reset을 시켜는 것 보단 데이터를 가지고 와서 연결시키는 것이 더 좋을 듯..
+        this.#mainCanvasDraw.resetMainCanvasData(this.#numRef, this.#tempoRef, this.#listSongform);
+        // this.#mainCanvasDraw.bringMainCanvasData(slide.mainImage, this.#numRef, this.#tempoRef, numValue, tempoValue, this.#listSongform);
+        this.#flagCanvasDraw.resetFlag(this.#listFlag);
+        FlagCanvasData.bringFlagData(this.#listFlag, slide.flagList);
+        this.#flagCanvasDraw.draw(this.#listFlag);
+        this.#mainCanvasDraw.drawCanvas(slide.mainImage);
+    };
+
+    // Canvas가 Edit 되었을 때 Slide에 내용물이 저장되는 기능
+
+    // 수정 중인 슬라이드가 보이도록 스크롤하는 기능
 
 }
 

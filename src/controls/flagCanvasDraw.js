@@ -1,4 +1,5 @@
 import FlagCanvasData from "./flagCanvasData";
+import canvasStore from "../stateManage/canvasStore";
 
 export default class FlagCanvasDraw {
     #ctx;
@@ -9,17 +10,17 @@ export default class FlagCanvasDraw {
     }
 
     resetFlag(listFlag) {
-        this.#clearFlagCanvas();
+        this.clearFlagCanvas();
         FlagCanvasData.resetFlagData(listFlag);
     }
 
     eraseFlag(listFlag) {
-        this.#clearFlagCanvas();
+        this.clearFlagCanvas();
         FlagCanvasData.eraseFlagData(listFlag);
-        this.#draw(listFlag);
+        this.draw(listFlag);
     }
 
-    #clearFlagCanvas() {
+    clearFlagCanvas() {
         const ctx = this.#ctx;
         ctx.clearRect(0, 0, this.#canvasWidth, this.#canvasHeight);
     }
@@ -42,8 +43,8 @@ export default class FlagCanvasDraw {
         ctx.restore();
     }
 
-    #draw(listFlag) {
-        this.#clearFlagCanvas();
+    draw(listFlag) {
+        this.clearFlagCanvas();
         for (let i = 0; i < listFlag.length; i++) {
             this.#rect(listFlag[i]);
         }
@@ -51,9 +52,8 @@ export default class FlagCanvasDraw {
 
     createFlag(flagName, listFlag) {
         FlagCanvasData.createFlagData(listFlag, flagName);
-        this.#draw(listFlag);
+        this.draw(listFlag);
     }
-
 
 
     // handle mousedown events
@@ -142,7 +142,7 @@ export default class FlagCanvasDraw {
             }
 
             // redraw the scene with the new rect positions
-            this.#draw(tempListFlag);
+            this.draw(tempListFlag);
 
             // list update
             setListFlag(tempListFlag);
