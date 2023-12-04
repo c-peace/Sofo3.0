@@ -50,13 +50,10 @@ export default class SlideControl {
         // 원래 edit이 True였던 slide를 false로 바꾸는 작업이 필요함.
         const slide = this.#listSlide[index];
         slide.edit = true;
-        // reset을 시켜는 것 보단 데이터를 가지고 와서 연결시키는 것이 더 좋을 듯..
-        this.#mainCanvasDraw.resetMainCanvasData(this.#numRef, this.#tempoRef, this.#listSongform);
-        // this.#mainCanvasDraw.bringMainCanvasData(slide.mainImage, this.#numRef, this.#tempoRef, numValue, tempoValue, this.#listSongform);
+        this.#mainCanvasDraw.bringMainCanvasData(slide.mainImage, this.#numRef, this.#tempoRef, slide.num, slide.tempo, this.#listSongform);
         this.#flagCanvasDraw.resetFlag(this.#listFlag);
         FlagCanvasData.bringFlagData(this.#listFlag, slide.flagList);
         this.#flagCanvasDraw.draw(this.#listFlag);
-        this.#mainCanvasDraw.drawCanvas(slide.mainImage);
     };
 
     // Canvas가 Edit 되었을 때 Slide에 내용물이 저장되는 기능

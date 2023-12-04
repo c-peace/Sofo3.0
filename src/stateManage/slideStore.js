@@ -9,6 +9,8 @@ const slideStore = create((set) => ({
         id: 0,
         mainImage: testSheet,
         submitImage: testSheet,
+        num: 5,
+        tempo: 50,
         flagList: [{
             x: Math.floor(Math.random() * 951) + 120,
             y: Math.floor(Math.random() * 100) + 1500,
