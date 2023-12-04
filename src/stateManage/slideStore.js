@@ -27,6 +27,9 @@ const slideStore = create((set) => ({
     setAddListSlide: (newSlide) => set((prev) => ({ listSlide: [...prev.listSlide, newSlide] })),
     setDelListSlide: () => set((prev) => ({ listSlide: prev.listSlide.slice(0, -1) })),
 
+    nowIndex: 0,
+    setNowIndex: (newIndex) => set({nowIndex: newIndex}),
+
 
 }));
 
