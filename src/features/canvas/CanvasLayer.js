@@ -1,12 +1,11 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import './CanvasLayer.css'
 import FlagCanvasDraw from '../../controls/flagCanvasDraw';
 import canvasStore from '../../stateManage/canvasStore';
 import MainCanvasDraw from '../../controls/mainCanvasDraw.js'
 
 export default function CanavasLayer() {
-    const { canvasMainRef, canvasFlagRef, listFlag, setListFlag, ctxFlag, setCtxFlag, setCtxMain } = canvasStore();
-    const canvasSubmitRef = useRef();
+    const { canvasMainRef, canvasFlagRef, canvasSubmitRef, listFlag, setListFlag, ctxFlag, setCtxFlag, setCtxMain, setCtxSubmit } = canvasStore();
 
     const [dragok, setDragok] = useState(false);
     const [startX, setStartX] = useState();
@@ -31,6 +30,12 @@ export default function CanavasLayer() {
         setCtxFlag(ctxFlag);
         canvasFlag.width = CANVAS.width;
         canvasFlag.height = CANVAS.height;
+
+        const canvasSubmit = canvasSubmitRef.current;
+        const ctxSubmit = canvasSubmit.getContext('2d');
+        setCtxSubmit(ctxSubmit);
+        canvasSubmit.width = CANVAS.width;
+        canvasSubmit.height = CANVAS.height;
 
         drawDefaultSetting(ctxMain);
     }, []);

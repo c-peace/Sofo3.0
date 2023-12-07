@@ -26,5 +26,10 @@ function SlideForm({ slide }) {
         border: `2px solid ${slide.edit ? '#6C6C6C' : '#D2BDAB'}`,
     }
 
-    return <img src={slide.submitImage} alt='' onClick={() => slideControl.loadSlideToCanvas(index)}></img>
+    const handlerSlideClick = ( index) => {
+        slideControl.saveSlide();
+        slideControl.loadSlideToCanvas(index);
+    }
+
+    return <img src={slide.submitImage} alt='' onClick={() => handlerSlideClick( index)}></img>
 }

@@ -50,7 +50,6 @@ export default function DrawBtnLayer() {
                 alert('Error(DrawBtnLayer.js) : trigger is not defined');
                 break;
         }
-
     }
 
     return (

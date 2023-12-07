@@ -110,9 +110,10 @@ export default class MainCanvasDraw {
         MainCanvasData.resetTempoValue(tempoRef);
     }
 
-    #bringMusicData(numRef, tempoRef, numValue, tempoValue) {
+    #bringMusicData(numRef, tempoRef, numValue, tempoValue, listSongform, songformValue) {
         MainCanvasData.bringNumValue(numRef, numValue);
         MainCanvasData.bringTempoValue(tempoRef, tempoValue);
+        MainCanvasData.bringSongformValue(listSongform, songformValue);
     }
 
     inputInfo() {
@@ -172,10 +173,9 @@ export default class MainCanvasDraw {
         this.#resetSongform(listSongform);
     }
 
-    bringMainCanvasData(mainImage, numRef, tempoRef, numValue, tempoValue, listSongform) {
+    bringMainCanvasData(mainImage, numRef, tempoRef, numValue, tempoValue, listSongform, songformValue) {
         this.drawCanvas(mainImage);
-        this.#bringMusicData(numRef, tempoRef, numValue, tempoValue)
-        this.#resetSongform(listSongform);
+        this.#bringMusicData(numRef, tempoRef, numValue, tempoValue, listSongform, songformValue);
     }
 
 

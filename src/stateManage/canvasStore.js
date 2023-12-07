@@ -16,8 +16,10 @@ const canvasStore = create((set) => ({
   // Ctx
   ctxMain: null,
   ctxFlag: null,
+  ctxSubmit: null,
   setCtxMain: (value) => set({ ctxMain: value }),
   setCtxFlag: (value) => set({ ctxFlag: value }),
+  setCtxSubmit: (value) => set({ctxSubmit: value}),
 
   // SongForm
   listSongform: [],

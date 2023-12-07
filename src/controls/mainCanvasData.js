@@ -29,4 +29,9 @@ export default class MainCanvasData {
     static resetSongform(list) {
         list.length = 0;
     }
+
+    static bringSongformValue(list, data) {
+        list.length = 0;
+        list.push(...data);
+    }
 }

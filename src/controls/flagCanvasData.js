@@ -22,6 +22,7 @@ export default class FlagCanvasData {
     };
 
     static bringFlagData(listFlag, data) {
+        listFlag.length = 0;
         listFlag.push(...data);
     };
 

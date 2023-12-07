@@ -2,6 +2,7 @@ import slideStore from "../stateManage/slideStore";
 import defaultSheet from "../assets/defaultSheet.png"
 import MainCanvasDraw from "./mainCanvasDraw";
 import FlagCanvasDraw from "./flagCanvasDraw";
+import SubmitCanvasControl from "./submitCanvasControl"
 import canvasStore from "../stateManage/canvasStore"
 import FlagCanvasData from "./flagCanvasData";
 
@@ -16,6 +17,10 @@ export default class SlideControl {
     // CanvasData
     #ctxMain = canvasStore((state) => state.ctxMain);
     #ctxFlag = canvasStore((state) => state.ctxFlag);
+    #ctxSubmit = canvasStore((state) => state.ctxSubmit);
+    #canvasMainRef = canvasStore((state) => state.canvasMainRef);
+    #canvasFlagRef = canvasStore((state) => state.canvasFlagRef);
+    #canvasSubmitRef = canvasStore((state) => state.canvasSubmitRef);
     #numRef = canvasStore((state) => state.numRef);
     #tempoRef = canvasStore((state) => state.tempoRef);
     #listSongform = canvasStore((state) => state.listSongform);
@@ -24,6 +29,7 @@ export default class SlideControl {
 
     #mainCanvasDraw = new MainCanvasDraw(this.#ctxMain);
     #flagCanvasDraw = new FlagCanvasDraw(this.#ctxFlag);
+    #submitCanvasControl = new SubmitCanvasControl(this.#ctxSubmit);
 
 
     constructor(listSlide) {
@@ -33,10 +39,13 @@ export default class SlideControl {
     addSlide() {
         this.#setAddListSlide({
             id: this.#listSlide.length,
-            mainImage: '',
+            mainImage: defaultSheet,
             submitImage: defaultSheet,
+            num: 1,
+            tempo: 110,
+            songform: [],
             flagList: [],
-            edit: true
+            edit: false
         });
     };
 
@@ -50,35 +59,34 @@ export default class SlideControl {
 
     // slide의 edit 변수를 변경해주는 함수
     #editControl(index) {
+        const slides = this.#listSlide;
         slides[this.#nowIndex].edit = false;
         slides[index].edit = true;
+        this.#setNowIndex(index);
     };
 
     loadSlideToCanvas(index) {
-        this.#setNowIndex(index);
         this.#editControl(index);
         const slide = this.#listSlide[index];
-        this.#mainCanvasDraw.bringMainCanvasData(slide.mainImage, this.#numRef, this.#tempoRef, slide.num, slide.tempo, this.#listSongform);
-        this.#flagCanvasDraw.resetFlag(this.#listFlag);
+        this.#mainCanvasDraw.bringMainCanvasData(slide.mainImage, this.#numRef, this.#tempoRef, slide.num, slide.tempo, this.#listSongform, slide.songform);
         FlagCanvasData.bringFlagData(this.#listFlag, slide.flagList);
         this.#flagCanvasDraw.draw(this.#listFlag);
+        console.log(this.#listSongform, slide.songform);
     };
 
     // Canvas가 Edit 되었을 때 Slide에 내용물이 저장되는 기능
+    // save 기능을 어디에 붙여서 실시간으로 작동하게 할지를 고민해야함.
     saveSlide() {
-        for (let i = 0; i < listSlide.length; i++) {
-            if (listSlide[i].edit) {
-                combineCanvas();
-                const s = listSlide[i];
-                s.mainImage = canvas.toDataURL();
-                s.submitImage = canvasSubmit.toDataURL();
-                s.flagList = Array.from(flags);
-            }
-        }
-    }
+        this.#submitCanvasControl.combineCanvas(this.#canvasMainRef, this.#canvasFlagRef);
+        const savedSlide = this.#listSlide[this.#nowIndex];
+        savedSlide.mainImage = this.#canvasMainRef.current.toDataURL();
+        savedSlide.submitImage = this.#canvasSubmitRef.current.toDataURL();
+        savedSlide.num = this.#numRef.current.value;
+        savedSlide.tempo = this.#tempoRef.current.value;
+        savedSlide.songform = Array.from(this.#listSongform);
+        savedSlide.flagList = Array.from(this.#listFlag);
+    };
 
     // 수정 중인 슬라이드가 보이도록 스크롤하는 기능
 
 }
-
-
