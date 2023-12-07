@@ -52,6 +52,8 @@ export default class SlideControl {
     delSlide() {
         if (this.#listSlide.length === 1) {
             alert('더 이상 슬라이드를 삭제할 수 없습니다.');
+        } else if (this.#listSlide.length === this.#nowIndex + 1) {
+            alert('선택되어 있는 슬라이드는 삭제할 수 없습니다.');
         } else {
             this.#setDelListSlide();
         }
@@ -71,7 +73,6 @@ export default class SlideControl {
         this.#mainCanvasDraw.bringMainCanvasData(slide.mainImage, this.#numRef, this.#tempoRef, slide.num, slide.tempo, this.#listSongform, slide.songform);
         FlagCanvasData.bringFlagData(this.#listFlag, slide.flagList);
         this.#flagCanvasDraw.draw(this.#listFlag);
-        console.log(this.#listSongform, slide.songform);
     };
 
     // Canvas가 Edit 되었을 때 Slide에 내용물이 저장되는 기능
@@ -86,7 +87,4 @@ export default class SlideControl {
         savedSlide.songform = Array.from(this.#listSongform);
         savedSlide.flagList = Array.from(this.#listFlag);
     };
-
-    // 수정 중인 슬라이드가 보이도록 스크롤하는 기능
-
 }
