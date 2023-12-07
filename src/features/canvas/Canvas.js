@@ -20,9 +20,9 @@ function IsRotatedCanvas() {
     if (isRotated) {
         return <CanvasRotated />;
     } else {
-        return <>
+        return <div>
             <DrawBtnLayer />
             <CanavasLayer />
-        </>;
+        </div>;
     }
 }

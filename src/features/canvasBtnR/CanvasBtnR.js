@@ -16,8 +16,7 @@ export default function CanvasBtnR() {
                 break;
 
             case 'Reset':
-                mainCanvasDraw.resetMainCanvas(numRef, tempoRef, listSongform);
-                MainCanvasDraw.defaultSet(ctxMain);
+                mainCanvasDraw.resetMainCanvasData(numRef, tempoRef, listSongform);
                 flagCanvasDraw.resetFlag(listFlag);
                 break;
 

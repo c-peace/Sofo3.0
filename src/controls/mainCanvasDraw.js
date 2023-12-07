@@ -1,10 +1,14 @@
 import MainCanvasData from "./mainCanvasData";
 import defaultSheet from "../assets/defaultSheet.png";
+import canvasStore from "../stateManage/canvasStore";
 
 export default class MainCanvasDraw {
     #ctx;
     #canvasWidth = 1190;
     #canvasHeight = 1684;
+
+    #listFlag = canvasStore((state) => state.listFlag);
+
     constructor(ctx) {
         this.#ctx = ctx;
     }
@@ -14,6 +18,16 @@ export default class MainCanvasDraw {
         image.src = defaultSheet;
         image.onload = function () {
             ctx.drawImage(image, 0, 0);
+        }
+    }
+
+    drawCanvas(url) {
+        const ctx = this.#ctx;
+        const image = new Image();
+        image.src = url;
+        image.onload = function() {
+            ctx.drawImage(image, 0, 0);
+
         }
     }
 
@@ -71,7 +85,7 @@ export default class MainCanvasDraw {
         const ctx = this.#ctx;
         ctx.beginPath();
         ctx.fillStyle = '#EAEAEA';
-        ctx.roundRect(168, 42, 124, 48, 8);
+        ctx.roundRect(168, 42, 130, 48, 8);
         ctx.fill();
         ctx.textAlign = 'center';
         ctx.font = 'bold 24px Times';
@@ -94,6 +108,12 @@ export default class MainCanvasDraw {
     #resetMusicData(numRef, tempoRef) {
         MainCanvasData.resetNumValue(numRef);
         MainCanvasData.resetTempoValue(tempoRef);
+    }
+
+    #bringMusicData(numRef, tempoRef, numValue, tempoValue, listSongform, songformValue) {
+        MainCanvasData.bringNumValue(numRef, numValue);
+        MainCanvasData.bringTempoValue(tempoRef, tempoValue);
+        MainCanvasData.bringSongformValue(listSongform, songformValue);
     }
 
     inputInfo() {
@@ -147,8 +167,16 @@ export default class MainCanvasDraw {
         ctx.fillText("In - A - B - I - A - B - B - C - D - O", 595, 155);
     }
 
-    resetMainCanvas(numRef, tempoRef, listSongform) {
+    resetMainCanvasData(numRef, tempoRef, listSongform) {
+        this.drawCanvas(defaultSheet);
         this.#resetMusicData(numRef, tempoRef);
         this.#resetSongform(listSongform);
     }
+
+    bringMainCanvasData(mainImage, numRef, tempoRef, numValue, tempoValue, listSongform, songformValue) {
+        this.drawCanvas(mainImage);
+        this.#bringMusicData(numRef, tempoRef, numValue, tempoValue, listSongform, songformValue);
+    }
+
+
 }

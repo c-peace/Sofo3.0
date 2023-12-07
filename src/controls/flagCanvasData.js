@@ -2,11 +2,11 @@ export default class FlagCanvasData {
 
     static resetFlagData(listFlag) {
         listFlag.length = 0;
-    }
+    };
 
     static eraseFlagData(listFlag) {
         listFlag.pop();
-    }
+    };
 
     static createFlagData(listFlag, flagName) {
         listFlag.push({
@@ -19,6 +19,11 @@ export default class FlagCanvasData {
             name: flagName,
             isDragging: false
         });
-    }
+    };
+
+    static bringFlagData(listFlag, data) {
+        listFlag.length = 0;
+        listFlag.push(...data);
+    };
 
 }

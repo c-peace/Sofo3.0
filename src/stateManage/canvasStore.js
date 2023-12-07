@@ -16,8 +16,10 @@ const canvasStore = create((set) => ({
   // Ctx
   ctxMain: null,
   ctxFlag: null,
+  ctxSubmit: null,
   setCtxMain: (value) => set({ ctxMain: value }),
   setCtxFlag: (value) => set({ ctxFlag: value }),
+  setCtxSubmit: (value) => set({ctxSubmit: value}),
 
   // SongForm
   listSongform: [],
@@ -28,7 +30,11 @@ const canvasStore = create((set) => ({
 
   // Flag
   listFlag: [],
+  // flagCavnasDraw에서 쓰임.
   setListFlag: (value) => set({ listFlag: value }),
+  setResetListFlag: () => set({ listFlag: []}),
+  setDelListFlag: () => set((prev) => ({ listSlide: prev.listSlide.slice(0, -1) })),
+  
 }))
 
 export default canvasStore;

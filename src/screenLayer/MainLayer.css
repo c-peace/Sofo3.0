@@ -2,4 +2,7 @@
     display: flex;
     justify-content: center;
     position: relative;
+    /* 텍스트가 선택되지 않도록 하는 기능 */
+    user-select : none;
+    cursor: default;
 }
