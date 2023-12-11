@@ -1,6 +1,5 @@
 import { create } from 'zustand'
 import defaultSheet from "../assets/defaultSheet.png";
-import testSheet from "../assets/test.jpg"
 
 const slideStore = create((set) => ({
 
@@ -9,19 +8,10 @@ const slideStore = create((set) => ({
         id: 0,
         mainImage: defaultSheet,
         submitImage: defaultSheet,
-        num: 5,
-        tempo: 50,
+        num: 1,
+        tempo: 110,
         songform: [],
-        flagList: [{
-            x: Math.floor(Math.random() * 951) + 120,
-            y: Math.floor(Math.random() * 100) + 1500,
-            width: 50,
-            height: 50,
-            strokeStyle: "red",
-            fillStyle: "white",
-            name: 'A',
-            isDragging: false
-        }],
+        flagList: [],
         edit: true
     }],
 
@@ -29,7 +19,7 @@ const slideStore = create((set) => ({
     setDelListSlide: () => set((prev) => ({ listSlide: prev.listSlide.slice(0, -1) })),
 
     nowIndex: 0,
-    setNowIndex: (newIndex) => set({nowIndex: newIndex}),
+    setNowIndex: (newIndex) => set({ nowIndex: newIndex }),
 
 
 }));
