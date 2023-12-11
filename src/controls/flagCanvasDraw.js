@@ -5,6 +5,10 @@ export default class FlagCanvasDraw {
     #ctx;
     #canvasWidth = 1190;
     #canvasHeight = 1684;
+
+    #isColorApplied = canvasStore((state) => state.isColorApplied);
+    #isTypeApplied = canvasStore((state) => state.isTypeApplied);
+
     constructor(ctx) {
         this.#ctx = ctx;
     }
@@ -37,10 +41,79 @@ export default class FlagCanvasDraw {
         ctx.strokeRect(flagData.x, flagData.y, flagData.width, flagData.height);
         // text
         ctx.textAlign = 'center';
-        ctx.fillStyle = flagData.strokeStyle;
-        ctx.font = '37px Arial';
-        ctx.fillText(flagData.name, flagData.x + 25, flagData.y + 39);
+        ctx.font = 'bold 37px Arial';
+
+        let element = flagData.name;
+        if (this.#isColorApplied) {
+            ctx.fillStyle = this.#flagColorEngine(element);
+        } else {
+            ctx.fillStyle = 'red';
+        }
+
+        if (this.#isTypeApplied) {
+            element = this.#flagTypeEngine(element);
+        }
+
+        ctx.fillText(element, flagData.x + 25, flagData.y + 39);
         ctx.restore();
+    }
+
+    #flagColorEngine(element) {
+        switch (element) {
+            case 'In':
+                return 'red'; // Red Color
+
+            case 'A':
+                return 'orange'; // Orange Color
+
+            case 'B':
+                return 'green'; // Green Color
+
+            case 'I':
+                return 'red'; // Red Color
+
+            case 'C':
+                return 'blue'; // Blue Color
+
+            case 'D':
+                return 'purple'; // Puple Color
+
+            case 'O':
+                return 'red'; // Red Color
+
+            default:
+                alert("Error(mainCanvasDraw, 163): element is not defined");
+                break;
+        };
+    }
+
+    #flagTypeEngine(element) {
+        switch (element) {
+            case 'In':
+                return 'In'; // Red Color
+
+            case 'A':
+                return 'V'; // Orange Color
+
+            case 'B':
+                return 'P'; // Green Color
+
+            case 'I':
+                return 'I'; // Red Color
+
+            case 'C':
+                return 'C'; // Blue Color
+
+            case 'D':
+                return 'B'; // Puple Color
+
+            case 'O':
+                return 'O'; // Red Color
+
+            default:
+                alert("Error(mainCanvasDraw, 163): element is not defined");
+                break;
+        };
     }
 
     draw(listFlag) {

@@ -14,7 +14,6 @@ export default class FlagCanvasData {
             y: Math.floor(Math.random() * 100) + 1500,
             width: 50,
             height: 50,
-            strokeStyle: "red",
             fillStyle: "white",
             name: flagName,
             isDragging: false

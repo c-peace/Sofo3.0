@@ -68,18 +68,34 @@ export function BtnInfo({ btnControls }) {
 }
 
 export function DropDownSongform({ btnControls }) {
-    return <div className="canvasBtn dropdown" id="songform">
-        <div className="dropdown-content-row">
-            <div id='option' className="option-row-big" title="Intro" onClick={() => btnControls('songform', 'In')}>In</div>
-            <div id='option' className="option-row-big" title="A part" onClick={() => btnControls('songform', 'A')}>A</div>
-            <div id='option' className="option-row-big" title="B part" onClick={() => btnControls('songform', 'B')}>B</div>
-            <div id='option' className="option-row-big" title="Interlude" onClick={() => btnControls('songform', 'I')}>I</div>
-            <div id='option' className="option-row-big" title="C part" onClick={() => btnControls('songform', 'C')}>C</div>
-            <div id='option' className="option-row-big" title="D part" onClick={() => btnControls('songform', 'D')}>D</div>
-            <div id='option' className="option-row-big" title="Outro" onClick={() => btnControls('songform', 'O')}>O</div>
-            <div id='option' className="option-row-big" title="Reset" onClick={() => btnControls('eraseSongform')}>Back</div>
-        </div>
-    </div>;
+    const { isTypeApplied } = canvasStore();
+    if (isTypeApplied) {
+        return <div className="canvasBtn dropdown" id="songform">
+            <div className="dropdown-content-row">
+                <div id='option' className="option-row-big" title="Intro" onClick={() => btnControls('songform', 'In')}>In</div>
+                <div id='option' className="option-row-big" title="Verse" onClick={() => btnControls('songform', 'A')}>V</div>
+                <div id='option' className="option-row-big" title="Pre-Chorus" onClick={() => btnControls('songform', 'B')}>P</div>
+                <div id='option' className="option-row-big" title="Interlude" onClick={() => btnControls('songform', 'I')}>I</div>
+                <div id='option' className="option-row-big" title="Chorus" onClick={() => btnControls('songform', 'C')}>C</div>
+                <div id='option' className="option-row-big" title="Bridge" onClick={() => btnControls('songform', 'D')}>B</div>
+                <div id='option' className="option-row-big" title="Outro" onClick={() => btnControls('songform', 'O')}>O</div>
+                <div id='option' className="option-row-big" title="Erase" onClick={() => btnControls('eraseSongform')}>Back</div>
+            </div>
+        </div>;
+    } else {
+        return <div className="canvasBtn dropdown" id="songform">
+            <div className="dropdown-content-row">
+                <div id='option' className="option-row-big" title="Intro" onClick={() => btnControls('songform', 'In')}>In</div>
+                <div id='option' className="option-row-big" title="A part" onClick={() => btnControls('songform', 'A')}>A</div>
+                <div id='option' className="option-row-big" title="B part" onClick={() => btnControls('songform', 'B')}>B</div>
+                <div id='option' className="option-row-big" title="Interlude" onClick={() => btnControls('songform', 'I')}>I</div>
+                <div id='option' className="option-row-big" title="C part" onClick={() => btnControls('songform', 'C')}>C</div>
+                <div id='option' className="option-row-big" title="D part" onClick={() => btnControls('songform', 'D')}>D</div>
+                <div id='option' className="option-row-big" title="Outro" onClick={() => btnControls('songform', 'O')}>O</div>
+                <div id='option' className="option-row-big" title="Erase" onClick={() => btnControls('eraseSongform')}>Back</div>
+            </div>
+        </div>;
+    }
 }
 
 export const UploadImage = forwardRef(function UploadImage({ btnControls }, ref) {
@@ -97,17 +113,34 @@ export const UploadImage = forwardRef(function UploadImage({ btnControls }, ref)
 });
 
 export function DropDownFlag({ btnControls }) {
-    return <div className="dropdown canvasBtn" id="flag">
-        Flag
-        <div className="dropdown-content-column">
-            <div id='option' className="option-column" title="Intro" onClick={() => btnControls('flag', 'In')}>In</div>
-            <div id='option' className="option-column" title="A part" onClick={() => btnControls('flag', 'A')}>A</div>
-            <div id='option' className="option-column" title="B part" onClick={() => btnControls('flag', 'B')}>B</div>
-            <div id='option' className="option-column" title="Interlude" onClick={() => btnControls('flag', 'I')}>I</div>
-            <div id='option' className="option-column" title="C part" onClick={() => btnControls('flag', 'C')}>C</div>
-            <div id='option' className="option-column" title="D part" onClick={() => btnControls('flag', 'D')}>D</div>
-            <div id='option' className="option-column" title="Outro" onClick={() => btnControls('flag', 'O')}>O</div>
-            <div id='option' className="option-column" title="Reset" onClick={() => btnControls('eraseFlag')}>Back</div>
-        </div>
-    </div>;
+    const { isTypeApplied } = canvasStore();
+    if (isTypeApplied) {
+        return <div className="dropdown canvasBtn" id="flag">
+            Flag
+            <div className="dropdown-content-column">
+                <div id='option' className="option-column" title="Intro" onClick={() => btnControls('flag', 'In')}>In</div>
+                <div id='option' className="option-column" title="Verse" onClick={() => btnControls('flag', 'A')}>V</div>
+                <div id='option' className="option-column" title="Pre-Chorus" onClick={() => btnControls('flag', 'B')}>P</div>
+                <div id='option' className="option-column" title="Interlude" onClick={() => btnControls('flag', 'I')}>I</div>
+                <div id='option' className="option-column" title="Chorus" onClick={() => btnControls('flag', 'C')}>C</div>
+                <div id='option' className="option-column" title="Bridge" onClick={() => btnControls('flag', 'D')}>B</div>
+                <div id='option' className="option-column" title="Outro" onClick={() => btnControls('flag', 'O')}>O</div>
+                <div id='option' className="option-column" title="Erase" onClick={() => btnControls('eraseFlag')}>Back</div>
+            </div>
+        </div>;
+    } else {
+        return <div className="dropdown canvasBtn" id="flag">
+            Flag
+            <div className="dropdown-content-column">
+                <div id='option' className="option-column" title="Intro" onClick={() => btnControls('flag', 'In')}>In</div>
+                <div id='option' className="option-column" title="A part" onClick={() => btnControls('flag', 'A')}>A</div>
+                <div id='option' className="option-column" title="B part" onClick={() => btnControls('flag', 'B')}>B</div>
+                <div id='option' className="option-column" title="Interlude" onClick={() => btnControls('flag', 'I')}>I</div>
+                <div id='option' className="option-column" title="C part" onClick={() => btnControls('flag', 'C')}>C</div>
+                <div id='option' className="option-column" title="D part" onClick={() => btnControls('flag', 'D')}>D</div>
+                <div id='option' className="option-column" title="Outro" onClick={() => btnControls('flag', 'O')}>O</div>
+                <div id='option' className="option-column" title="Erase" onClick={() => btnControls('eraseFlag')}>Back</div>
+            </div>
+        </div>;
+    }
 }
