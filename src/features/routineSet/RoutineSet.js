@@ -1,4 +1,7 @@
 import './RoutineSet.css'
+import canvasStore from "../../stateManage/canvasStore"
+import MainCanvasDraw from '../../controls/mainCanvasDraw';
+import FlagCanvasDraw from '../../controls/flagCanvasDraw';
 
 export default function RoutineSet() {
     return (
@@ -13,14 +16,22 @@ export default function RoutineSet() {
 function RoutineSetBox() {
     return (
         <div id='routineSetBox'>
-            <RoutineSetItem name={'icon-pencil-alt'} color={'black'} />
-            <RoutineSetItem name={'icon-font'} color={'black'} />
+            <RoutineColorSet name={'icon-pencil-alt'} />
+            <RoutineTypeSet name={'icon-font'} />
         </div>
     );
 }
 
-function RoutineSetItem({ name, color }) {
-    return <i id='routineSetItem' className={name} style={{ color: { color } }}></i>;
+function RoutineColorSet({ name }) {
+    const { isColorApplied, reverseColorApplied } = canvasStore();
+
+    return <i id='routineSetItem' className={name} style={{ color: isColorApplied ? 'orangered' : 'black' }} onClick={() => reverseColorApplied()}></i>;
+}
+
+function RoutineTypeSet({ name }) {
+    const { isTypeApplied, reverseTypeApplied } = canvasStore();
+
+    return <i id='routineSetItem' className={name} style={{ color: isTypeApplied ? 'orangered' : 'black' }} onClick={() => reverseTypeApplied()}></i>;
 }
 
 function RoutineSetInfo() {
@@ -32,6 +43,6 @@ function RoutineSetInfo() {
     );
 }
 
-function RoutineSetInfoItem({name}) {
+function RoutineSetInfoItem({ name }) {
     return <h1 id='RoutineSetInfoItem'>{name}</h1>;
 }

@@ -28,6 +28,12 @@ const canvasStore = create((set) => ({
   isRotated: false,
   reverseRotated: () => set((state) => ({ isRotated: state.isRotated ? false : true })),
 
+  // Routine
+  isColorApplied: false,
+  reverseColorApplied: () => set((state) => ({ isColorApplied: state.isColorApplied ? false : true})),
+  isTypeApplied: false,
+  reverseTypeApplied: () => set((state) => ({ isTypeApplied: state.isTypeApplied ? false : true})),
+
   // Flag
   listFlag: [],
   // flagCavnasDraw에서 쓰임.

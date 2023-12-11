@@ -1,16 +1,18 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import './CanvasLayer.css'
 import FlagCanvasDraw from '../../controls/flagCanvasDraw';
 import canvasStore from '../../stateManage/canvasStore';
 import MainCanvasDraw from '../../controls/mainCanvasDraw.js'
 
 export default function CanavasLayer() {
-    const { canvasMainRef, canvasFlagRef, canvasSubmitRef, listFlag, setListFlag, ctxFlag, setCtxFlag, setCtxMain, setCtxSubmit } = canvasStore();
+    const { canvasMainRef, canvasFlagRef, canvasSubmitRef, listFlag, setListFlag, ctxFlag, setCtxFlag, ctxMain, setCtxMain, setCtxSubmit, isColorApplied, isTypeApplied, listSongform } = canvasStore();
 
     const [dragok, setDragok] = useState(false);
     const [startX, setStartX] = useState();
     const [startY, setStartY] = useState();
+    const routineSetFirstStopRef = useRef(false);
     const flagCanvasDraw = new FlagCanvasDraw(ctxFlag);
+    const mainCanvasDraw = new MainCanvasDraw(ctxMain);
 
     const CANVAS = { width: 1190, height: 1684 };
 
@@ -39,6 +41,19 @@ export default function CanavasLayer() {
 
         drawDefaultSetting(ctxMain);
     }, []);
+
+    useEffect(() => {
+        if (routineSetFirstStopRef.current) {
+            routineSetHandler();
+        } else {
+            routineSetFirstStopRef.current = true;
+        }
+    }, [isColorApplied, isTypeApplied])
+
+    function routineSetHandler() {
+        mainCanvasDraw.reloadSongform(listSongform);
+        flagCanvasDraw.draw(listFlag);
+    }
 
     const mouseDown = (e) => {
         flagCanvasDraw.myDown(e, dragok, setDragok, listFlag, setListFlag, setStartX, setStartY);
