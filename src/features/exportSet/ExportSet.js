@@ -1,5 +1,6 @@
 import './ExportSet.css'
 import canvasStore from '../../stateManage/canvasStore';
+import RotatedCanvasDraw from '../../controls/rotatedCanvasDraw';
 
 export default function ExportSet() {
     const {isRotated} = canvasStore()
@@ -23,8 +24,15 @@ function ExportSetBox() {
 }
 
 function RotationSet() {
-    const {isRotated, reverseRotated} = canvasStore();
-    return <i id='rotationSet' className='icon-doc' style={{ transform: `rotate(${isRotated ? -90 : 0}deg)` }} onClick={() => reverseRotated()}></i>
+    const {isRotated, reverseRotated, ctxRotated} = canvasStore();
+    const rotatedCanvasDraw = new RotatedCanvasDraw(ctxRotated);
+
+    function rotatedHandler() {
+        reverseRotated();
+        // rotatedCanvasDraw.drawRotatedCanvas();
+    }
+
+    return <i id='rotationSet' className='icon-doc' style={{ transform: `rotate(${isRotated ? -90 : 0}deg)` }} onClick={() => rotatedHandler()}></i>
 }
 
 function ExportSetItem({ name }) {
