@@ -5,11 +5,11 @@ import SlideControl from '../../controls/slideControl';
 export default function SlideList() {
 
     const { listSlide } = slideStore();
-    const Slides = listSlide.map((slide) => (<SlideForm key={slide.id} slide={slide} />));
+    const slides = listSlide.map((slide) => (<SlideForm key={slide.id} slide={slide} />));
 
     return (
         <div id='listView'>
-            {Slides}
+            {slides}
         </div>
     );
 }

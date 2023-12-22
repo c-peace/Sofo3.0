@@ -12,15 +12,21 @@ const slideStore = create((set) => ({
         tempo: 110,
         songform: [],
         flagList: [],
-        edit: true
+        edit: true,
     }],
 
     setAddListSlide: (newSlide) => set((prev) => ({ listSlide: [...prev.listSlide, newSlide] })),
     setDelListSlide: () => set((prev) => ({ listSlide: prev.listSlide.slice(0, -1) })),
 
+    // nowIndex : edit == true
     nowIndex: 0,
     setNowIndex: (newIndex) => set({ nowIndex: newIndex }),
 
+    // RotatedSlide
+    listRotatedSlide: [],
+    addListRotatedSlide: (newSlide) => set((prev) => ({ listRotatedSlide: [...prev.listRotatedSlide, newSlide] })),
+    setListRotatedSlide: (list) => set({ listRotatedSlide: list }),
+    resetListRotatedSlide: () => set({ listRotatedSlide: [] }),
 
 }));
 

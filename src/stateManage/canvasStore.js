@@ -41,6 +41,7 @@ const canvasStore = create((set) => ({
 
   // Flag
   listFlag: [],
+  
   // flagCavnasDraw에서 쓰임.
   setListFlag: (value) => set({ listFlag: value }),
   setResetListFlag: () => set({ listFlag: [] }),
