@@ -22,8 +22,11 @@ const canvasStore = create((set) => ({
 
   // RotatedCanvas
   canvasRotatedRef: createRef(null),
+  canvasConvertRef: createRef(null),
   ctxRotated: null,
+  ctxConvert: null,
   setCtxRotated: (value) => set({ ctxRotated: value }),
+  setCtxConvert: (value) => set({ ctxConvert: value }),
 
   // btn Ref
   numRef: createRef(null),

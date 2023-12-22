@@ -7,7 +7,7 @@ import SlideControl from '../../controls/slideControl';
 
 export default function CanvasRotated() {
     const ROTATEDCANVAS = { width: 2380, height: 1684 };
-    const { canvasRotatedRef, setCtxRotated, ctxRotated } = canvasStore();
+    const { canvasRotatedRef, canvasConvertRef, setCtxRotated, setCtxConvert } = canvasStore();
     const { listSlide, listRotatedSlide } = slideStore();
     const slideControl = new SlideControl(listSlide);
 
@@ -17,13 +17,21 @@ export default function CanvasRotated() {
         setCtxRotated(ctxRotated);
         canvasRotated.width = ROTATEDCANVAS.width;
         canvasRotated.height = ROTATEDCANVAS.height;
-        slideControl.convertRotatedSlide(canvasRotatedRef, ctxRotated);
+
+        const canvasConvert = canvasConvertRef.current;
+        const ctxConvert = canvasConvert.getContext('2d');
+        setCtxConvert(ctxConvert);
+        canvasConvert.width = ROTATEDCANVAS.width;
+        canvasConvert.height = ROTATEDCANVAS.height;
+
+        RotatedCanvasDraw.drawRotatedCanvasSet(ctxRotated, listSlide[0], listSlide[1]);
+
+        slideControl.convertRotatedSlide(canvasConvertRef, ctxConvert);
     }, []);
 
-    if (listRotatedSlide[0]) {
-        RotatedCanvasDraw.drawRotatedCanvasSet(ctxRotated, listRotatedSlide[0].rotatedImage);
-    }
 
-
-    return <canvas ref={canvasRotatedRef} id='canvasRotated'></canvas>;
+    return <>
+        <canvas ref={canvasRotatedRef} id='canvasRotated'></canvas>;
+        <canvas ref={canvasConvertRef} id='canvasConvert'></canvas>
+    </>
 }

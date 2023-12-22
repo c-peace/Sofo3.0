@@ -101,7 +101,7 @@ export default class SlideControl {
 
 
     // RotatedCanvas로 변경 될 때 동작하는 Converter
-    async convertRotatedSlide(canvasRotatedRef, ctxRotated) {
+    async convertRotatedSlide(canvasConvertRef, ctxConvert) {
         const rotatedSlide = [];
         const array = this.#listSlide;
         const arrayLength = parseInt(array.length / 2) + (array.length % 2);
@@ -109,14 +109,14 @@ export default class SlideControl {
         this.#resetListRotatedSlide();
 
         for (let i = 0; i < arrayLength; i++) {
-            ctxRotated.clearRect(0, 0, 2380, 1684);
+            ctxConvert.clearRect(0, 0, 2380, 1684);
             const imageL = await this.#loadImage(array[(2 * i)]);
-            ctxRotated.drawImage(imageL, 0, 0);
+            ctxConvert.drawImage(imageL, 0, 0);
             if (!Boolean(array.length % 2) || i != (arrayLength - 1)) {
                 const imageR = await this.#loadImage(array[(2 * i + 1)]);
-                ctxRotated.drawImage(imageR, 1190, 0);
+                ctxConvert.drawImage(imageR, 1190, 0);
             }
-            const imageRotated = await this.#loadImageRotated(canvasRotatedRef.current.toDataURL());
+            const imageRotated = await this.#loadImageRotated(canvasConvertRef.current.toDataURL());
             rotatedSlide.push({
                 id: rotatedSlide.length,
                 rotatedImage: imageRotated.src

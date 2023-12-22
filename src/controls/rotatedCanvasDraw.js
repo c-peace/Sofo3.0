@@ -9,38 +9,18 @@ export default class RotatedCanvasDraw {
         this.#ctx = ctx;
     }
 
-    drawRotatedImageConverter(ctxRotated, srcImageL, srcImageR, isBeImageR) {
-        const ctx = ctxRotated;
-        const imageL = new Image();
-        const imageR = new Image();
-
-        imageL.src = srcImageL.submitImage;
-        imageL.onload = function () {
-            ctx.drawImage(imageL, 0, 0);
-
-            if (isBeImageR) {
-                imageR.src = srcImageR.submitImage;
-                imageR.onload = function () {
-                    ctx.drawImage(imageR, 1190, 0);
-                }
-            }
-        }
-    }
-
-
-
-
-
-
-
-
     // slide에서 1, 2 page를 가지고 와서 canvas에 2개의 악보를 그려놓는 함수
     // 이 함수를 개조해서 slide를 재정렬 시키는 함수로 만들고 결국에 화면에 띄우는 함수는 slide에서 이미지를 가져와서 보여주는 정도로만 하면 될 것 같다.
-    static drawRotatedCanvasSet(ctx, url) {
-        const image = new Image();
-        image.src = url;
-        image.onload = function () {
-            ctx.drawImage(image, 0, 0);
+    static drawRotatedCanvasSet(ctx, imageUrlL, imageUrlR) {
+        const imageL = new Image();
+        const imageR = new Image();
+        imageL.src = imageUrlL.submitImage;
+        imageL.onload = function () {
+            ctx.drawImage(imageL, 0, 0);
+        }
+        imageR.src = imageUrlR.submitImage;
+        imageR.onload = function () {
+            ctx.drawImage(imageR, 1190, 0);
         }
     }
 
