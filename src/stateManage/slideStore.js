@@ -28,6 +28,10 @@ const slideStore = create((set) => ({
     setListRotatedSlide: (list) => set({ listRotatedSlide: list }),
     resetListRotatedSlide: () => set({ listRotatedSlide: [] }),
 
+    // selectIndex : select == true
+    selectIndex: 0,
+    setSelectIndex: (newIndex) => set({selectIndex: newIndex}),
+
 }));
 
 export default slideStore;

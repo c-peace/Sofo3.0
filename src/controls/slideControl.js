@@ -13,8 +13,12 @@ export default class SlideControl {
     #setAddListSlide = slideStore((state) => state.setAddListSlide);
     #setDelListSlide = slideStore((state) => state.setDelListSlide);
     #listSlide;
+
     #nowIndex = slideStore((state) => state.nowIndex);
     #setNowIndex = slideStore((state) => state.setNowIndex);
+    #selectIndex = slideStore((state) => state.selectIndex)
+    #setSelectIndex = slideStore((state) => state.setSelectIndex);
+
     #listRotatedSlide = slideStore((state) => state.listRotatedSlide);
     #setListRotatedSlide = slideStore((state) => state.setListRotatedSlide);
     #resetListRotatedSlide = slideStore((state) => state.resetListRotatedSlide);
@@ -119,7 +123,8 @@ export default class SlideControl {
             const imageRotated = await this.#loadImageRotated(canvasConvertRef.current.toDataURL());
             rotatedSlide.push({
                 id: rotatedSlide.length,
-                rotatedImage: imageRotated.src
+                rotatedImage: imageRotated.src,
+                select: false,
             })
         }
         this.#setListRotatedSlide(rotatedSlide);
@@ -148,4 +153,18 @@ export default class SlideControl {
         await promise;
         return img;
     }
+
+    #selectControl(index) {
+        const slides = this.#listRotatedSlide;
+        slides[this.#selectIndex].select = false;
+        slides[index].select = true;
+        this.#setSelectIndex(index);
+    };
+
+    loadRotatedSlideToCanvas(index) {
+        this.#selectControl(index);
+        const url = this.#listRotatedSlide[index].rotatedImage;
+        this.#ctxRotated.clearRect(0, 0, 2380, 1684);
+        this.#rotatedCanvasDraw.drawRotatedCanvas(url)
+    };
 }

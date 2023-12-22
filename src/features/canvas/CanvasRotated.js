@@ -24,7 +24,7 @@ export default function CanvasRotated() {
         canvasConvert.width = ROTATEDCANVAS.width;
         canvasConvert.height = ROTATEDCANVAS.height;
 
-        RotatedCanvasDraw.drawRotatedCanvasSet(ctxRotated, listSlide[0], listSlide[1]);
+        RotatedCanvasDraw.drawRotatedCanvasSet(ctxRotated, listSlide);
 
         slideControl.convertRotatedSlide(canvasConvertRef, ctxConvert);
     }, []);
