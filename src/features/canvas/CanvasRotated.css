@@ -3,3 +3,7 @@
     height: var(--size-canvasRotatedHeight);
     background-color: white;
 }
+
+#canvasConvert {
+    display: none;
+}

@@ -5,22 +5,33 @@ import FlagCanvasDraw from "./flagCanvasDraw";
 import SubmitCanvasControl from "./submitCanvasControl"
 import canvasStore from "../stateManage/canvasStore"
 import FlagCanvasData from "./flagCanvasData";
+import RotatedCanvasDraw from "./rotatedCanvasDraw";
+import defaultImage from "../assets/defaultSheet.png";
 
 export default class SlideControl {
     // Slide Data
     #setAddListSlide = slideStore((state) => state.setAddListSlide);
     #setDelListSlide = slideStore((state) => state.setDelListSlide);
     #listSlide;
+
     #nowIndex = slideStore((state) => state.nowIndex);
     #setNowIndex = slideStore((state) => state.setNowIndex);
+    #selectIndex = slideStore((state) => state.selectIndex)
+    #setSelectIndex = slideStore((state) => state.setSelectIndex);
+
+    #listRotatedSlide = slideStore((state) => state.listRotatedSlide);
+    #setListRotatedSlide = slideStore((state) => state.setListRotatedSlide);
+    #resetListRotatedSlide = slideStore((state) => state.resetListRotatedSlide);
 
     // CanvasData
     #ctxMain = canvasStore((state) => state.ctxMain);
     #ctxFlag = canvasStore((state) => state.ctxFlag);
     #ctxSubmit = canvasStore((state) => state.ctxSubmit);
+    #ctxRotated = canvasStore((state) => state.ctxRotated);
     #canvasMainRef = canvasStore((state) => state.canvasMainRef);
     #canvasFlagRef = canvasStore((state) => state.canvasFlagRef);
     #canvasSubmitRef = canvasStore((state) => state.canvasSubmitRef);
+    #canvasRotatedRef = canvasStore((state) => state.canvasRotatedRef);
     #numRef = canvasStore((state) => state.numRef);
     #tempoRef = canvasStore((state) => state.tempoRef);
     #listSongform = canvasStore((state) => state.listSongform);
@@ -30,6 +41,9 @@ export default class SlideControl {
     #mainCanvasDraw = new MainCanvasDraw(this.#ctxMain);
     #flagCanvasDraw = new FlagCanvasDraw(this.#ctxFlag);
     #submitCanvasControl = new SubmitCanvasControl(this.#ctxSubmit);
+
+    // RotatedCanvasDraw
+    #rotatedCanvasDraw = new RotatedCanvasDraw(this.#ctxRotated);
 
 
     constructor(listSlide) {
@@ -86,5 +100,71 @@ export default class SlideControl {
         savedSlide.tempo = this.#tempoRef.current.value;
         savedSlide.songform = Array.from(this.#listSongform);
         savedSlide.flagList = Array.from(this.#listFlag);
+    };
+
+
+
+    // RotatedCanvas로 변경 될 때 동작하는 Converter
+    async convertRotatedSlide(canvasConvertRef, ctxConvert) {
+        const rotatedSlide = [];
+        const array = this.#listSlide;
+        const arrayLength = parseInt(array.length / 2) + (array.length % 2);
+
+        this.#resetListRotatedSlide();
+
+        for (let i = 0; i < arrayLength; i++) {
+            ctxConvert.clearRect(0, 0, 2380, 1684);
+            const imageL = await this.#loadImage(array[(2 * i)]);
+            ctxConvert.drawImage(imageL, 0, 0);
+            if (!Boolean(array.length % 2) || i != (arrayLength - 1)) {
+                const imageR = await this.#loadImage(array[(2 * i + 1)]);
+                ctxConvert.drawImage(imageR, 1190, 0);
+            }
+            const imageRotated = await this.#loadImageRotated(canvasConvertRef.current.toDataURL());
+            rotatedSlide.push({
+                id: rotatedSlide.length,
+                rotatedImage: imageRotated.src,
+                select: false,
+            })
+        }
+        this.#setListRotatedSlide(rotatedSlide);
+    }
+
+    async #loadImage(url) {
+        let img = new Image();
+        img.src = url.submitImage;
+
+        const promise = new Promise((resolve) => {
+            img.onload = resolve;
+        });
+
+        await promise;
+        return img;
+    }
+
+    async #loadImageRotated(url) {
+        let img = new Image();
+        img.src = url;
+
+        const promise = new Promise((resolve) => {
+            img.onload = resolve;
+        });
+
+        await promise;
+        return img;
+    }
+
+    #selectControl(index) {
+        const slides = this.#listRotatedSlide;
+        slides[this.#selectIndex].select = false;
+        slides[index].select = true;
+        this.#setSelectIndex(index);
+    };
+
+    loadRotatedSlideToCanvas(index) {
+        this.#selectControl(index);
+        const url = this.#listRotatedSlide[index].rotatedImage;
+        this.#ctxRotated.clearRect(0, 0, 2380, 1684);
+        this.#rotatedCanvasDraw.drawRotatedCanvas(url)
     };
 }
