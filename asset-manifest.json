@@ -1,19 +1,24 @@
 {
   "files": {
-    "main.css": "/Sofo3.0/static/css/main.d2bc8ddd.css",
-    "main.js": "/Sofo3.0/static/js/main.207f9324.js",
-    "static/js/496.a7406299.chunk.js": "/Sofo3.0/static/js/496.a7406299.chunk.js",
+    "main.css": "/Sofo3.0/static/css/main.be2ea527.css",
+    "main.js": "/Sofo3.0/static/js/main.961ecdad.js",
+    "static/js/498.d1e2c196.chunk.js": "/Sofo3.0/static/js/498.d1e2c196.chunk.js",
+    "static/js/703.0a3bd711.chunk.js": "/Sofo3.0/static/js/703.0a3bd711.chunk.js",
+    "static/js/379.f1e423fc.chunk.js": "/Sofo3.0/static/js/379.f1e423fc.chunk.js",
+    "static/js/496.efba3329.chunk.js": "/Sofo3.0/static/js/496.efba3329.chunk.js",
     "static/media/defaultSheet.png": "/Sofo3.0/static/media/defaultSheet.048348fc93741f1a1e70.png",
-    "static/media/test.jpg": "/Sofo3.0/static/media/test.99934fdd558529876b01.jpg",
     "static/media/fontello.eot?56431239": "/Sofo3.0/static/media/fontello.0756c741d729721ca2db.eot",
     "static/media/fontello.svg?56431239": "/Sofo3.0/static/media/fontello.c34b4e256bf13ccd35d5.svg",
     "index.html": "/Sofo3.0/index.html",
-    "main.d2bc8ddd.css.map": "/Sofo3.0/static/css/main.d2bc8ddd.css.map",
-    "main.207f9324.js.map": "/Sofo3.0/static/js/main.207f9324.js.map",
-    "496.a7406299.chunk.js.map": "/Sofo3.0/static/js/496.a7406299.chunk.js.map"
+    "main.be2ea527.css.map": "/Sofo3.0/static/css/main.be2ea527.css.map",
+    "main.961ecdad.js.map": "/Sofo3.0/static/js/main.961ecdad.js.map",
+    "498.d1e2c196.chunk.js.map": "/Sofo3.0/static/js/498.d1e2c196.chunk.js.map",
+    "703.0a3bd711.chunk.js.map": "/Sofo3.0/static/js/703.0a3bd711.chunk.js.map",
+    "379.f1e423fc.chunk.js.map": "/Sofo3.0/static/js/379.f1e423fc.chunk.js.map",
+    "496.efba3329.chunk.js.map": "/Sofo3.0/static/js/496.efba3329.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.d2bc8ddd.css",
-    "static/js/main.207f9324.js"
+    "static/css/main.be2ea527.css",
+    "static/js/main.961ecdad.js"
   ]
 }
