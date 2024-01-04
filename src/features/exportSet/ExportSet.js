@@ -2,6 +2,7 @@ import './ExportSet.css'
 import canvasStore from '../../stateManage/canvasStore';
 import SlideControl from '../../controls/slideControl';
 import slideStore from '../../stateManage/slideStore';
+import ExportControl from '../../controls/exportControl';
 
 export default function ExportSet() {
     const { isRotated } = canvasStore()
@@ -18,22 +19,21 @@ function ExportSetBox() {
     return (
         <div id='exportSetBox'>
             <RotationSet />
-            <ExportSetItem name={'icon-print'} />
-            <ExportSetItem name={'icon-download'} />
+            <PrintSet />
+            <DownloadSet />
         </div>
     );
 }
 
 function RotationSet() {
     const { isRotated, reverseRotated } = canvasStore();
-    const { listSlide, listRotatedSlide, resetListRotatedSlide } = slideStore();
+    const { listSlide, resetListRotatedSlide } = slideStore();
     const slideControl = new SlideControl(listSlide);
 
     function rotatedHandler() {
         if (!isRotated) {
             slideControl.saveSlide();
         } else {
-            // console.log(listRotatedSlide[0].rotatedImage);
             resetListRotatedSlide();
         }
         reverseRotated();
@@ -42,8 +42,17 @@ function RotationSet() {
     return <i id='rotationSet' className='icon-doc' style={{ transform: `rotate(${isRotated ? -90 : 0}deg)` }} onClick={() => rotatedHandler()}></i>
 }
 
-function ExportSetItem({ name }) {
-    return <i id='exportSetItem' className={name}></i>;
+function PrintSet() {
+    const { isRotated } = canvasStore();
+    const exportControl = new ExportControl(isRotated);
+    return <i id='exportSetItem' className='icon-print' onClick={() => exportControl.pdfControl('print')}></i>;
+}
+
+function DownloadSet() {
+    const { isRotated } = canvasStore();
+    const exportControl = new ExportControl(isRotated);
+
+    return <i id='exportSetItem' className='icon-download' onClick={() => exportControl.pdfControl('download')}></i>
 }
 
 function ExportSetInfo() {

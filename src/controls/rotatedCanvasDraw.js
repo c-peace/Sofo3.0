@@ -3,7 +3,6 @@ import defaultImage from "../assets/defaultSheet.png";
 
 export default class RotatedCanvasDraw {
     #ctx;
-    #listSlide = slideStore((state) => state.listSlide);
 
     constructor(ctx) {
         this.#ctx = ctx;

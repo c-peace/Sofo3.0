@@ -1,6 +1,5 @@
 import ExportSet from "../features/exportSet/ExportSet";
 import RoutineSet from "../features/routineSet/RoutineSet";
-import Guide from "../features/guide/Guide";
 import './SetLayer.css'
 import canvasStore from "../stateManage/canvasStore.js"
 
@@ -19,9 +18,6 @@ function IsRotatedSetLayer() {
   if (isRotated) {
     return <div></div>;
   } else {
-    return <>
-      <RoutineSet />
-      <Guide />
-    </>;
+    return <RoutineSet />
   }
 }

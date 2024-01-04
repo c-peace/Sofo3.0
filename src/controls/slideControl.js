@@ -6,7 +6,6 @@ import SubmitCanvasControl from "./submitCanvasControl"
 import canvasStore from "../stateManage/canvasStore"
 import FlagCanvasData from "./flagCanvasData";
 import RotatedCanvasDraw from "./rotatedCanvasDraw";
-import defaultImage from "../assets/defaultSheet.png";
 
 export default class SlideControl {
     // Slide Data
@@ -31,12 +30,10 @@ export default class SlideControl {
     #canvasMainRef = canvasStore((state) => state.canvasMainRef);
     #canvasFlagRef = canvasStore((state) => state.canvasFlagRef);
     #canvasSubmitRef = canvasStore((state) => state.canvasSubmitRef);
-    #canvasRotatedRef = canvasStore((state) => state.canvasRotatedRef);
     #numRef = canvasStore((state) => state.numRef);
     #tempoRef = canvasStore((state) => state.tempoRef);
     #listSongform = canvasStore((state) => state.listSongform);
     #listFlag = canvasStore((state) => state.listFlag);
-    #setListFlag = canvasStore((state) => state.setListFlag);
 
     #mainCanvasDraw = new MainCanvasDraw(this.#ctxMain);
     #flagCanvasDraw = new FlagCanvasDraw(this.#ctxFlag);
