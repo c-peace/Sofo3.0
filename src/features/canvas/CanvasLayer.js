@@ -1,11 +1,15 @@
 import { useEffect, useRef, useState } from 'react';
 import './CanvasLayer.css'
 import FlagCanvasDraw from '../../controls/flagCanvasDraw';
-import canvasStore from '../../stateManage/canvasStore';
 import MainCanvasDraw from '../../controls/mainCanvasDraw.js'
+import canvasStore from '../../stateManage/canvasStore';
+import slideStore from '../../stateManage/slideStore.js';
+import SlideControl from '../../controls/slideControl.js';
 
 export default function CanavasLayer() {
-    const { canvasMainRef, canvasFlagRef, canvasSubmitRef, listFlag, setListFlag, ctxFlag, setCtxFlag, ctxMain, setCtxMain, setCtxSubmit, isColorApplied, isTypeApplied, listSongform } = canvasStore();
+    const { canvasMainRef, canvasFlagRef, canvasSubmitRef, listFlag, setListFlag, ctxFlag, setCtxFlag, ctxMain, setCtxMain, setCtxSubmit, isColorApplied, isTypeApplied, listSongform, numRef, tempoRef } = canvasStore();
+    const { listSlide, nowIndex } = slideStore();
+
 
     const [dragok, setDragok] = useState(false);
     const [startX, setStartX] = useState();
@@ -13,11 +17,13 @@ export default function CanavasLayer() {
     const routineSetFirstStopRef = useRef(false);
     const flagCanvasDraw = new FlagCanvasDraw(ctxFlag);
     const mainCanvasDraw = new MainCanvasDraw(ctxMain);
+    const slideControl = new SlideControl(listSlide);
 
     const CANVAS = { width: 1190, height: 1684 };
 
-    function drawDefaultSetting(ctxMain) {
-        MainCanvasDraw.defaultSet(ctxMain);
+    function drawDefaultSetting(ctxMain, ctxFlag) {
+        MainCanvasDraw.defaultSet(ctxMain, listSlide, nowIndex, numRef, tempoRef);
+        FlagCanvasDraw.defaultSet(ctxFlag, listFlag, isColorApplied, isTypeApplied);
     }
 
     useEffect(() => {
@@ -39,7 +45,7 @@ export default function CanavasLayer() {
         canvasSubmit.width = CANVAS.width;
         canvasSubmit.height = CANVAS.height;
 
-        drawDefaultSetting(ctxMain);
+        drawDefaultSetting(ctxMain, ctxFlag);
     }, []);
 
     useEffect(() => {

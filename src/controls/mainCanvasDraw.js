@@ -14,12 +14,16 @@ export default class MainCanvasDraw {
         this.#ctx = ctx;
     }
 
-    static defaultSet(ctx) {
+    static defaultSet(ctx, listSlide, nowIndex, numRef, tempoRef) {
+        const slide = listSlide[nowIndex];
         const image = new Image();
-        image.src = defaultSheet;
+        image.src = slide.mainImage;
         image.onload = function () {
             ctx.drawImage(image, 0, 0);
         }
+
+        MainCanvasData.bringNumValue(numRef, slide.num);
+        MainCanvasData.bringTempoValue(tempoRef, slide.tempo);
     }
 
     drawCanvas(url) {
@@ -28,7 +32,6 @@ export default class MainCanvasDraw {
         image.src = url;
         image.onload = function () {
             ctx.drawImage(image, 0, 0);
-
         }
     }
 
