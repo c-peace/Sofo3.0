@@ -1,6 +1,6 @@
 import { jsPDF } from "jspdf";
 import slideStore from "../stateManage/slideStore";
-import printJS from 'print-js'
+
 
 export default class ExportControl {
     #rotated
