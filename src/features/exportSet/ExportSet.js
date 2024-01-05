@@ -27,7 +27,7 @@ function ExportSetBox() {
 
 function RotationSet() {
     const { isRotated, reverseRotated } = canvasStore();
-    const { listSlide, resetListRotatedSlide } = slideStore();
+    const { listSlide, resetListRotatedSlide, nowIndex } = slideStore();
     const slideControl = new SlideControl(listSlide);
 
     function rotatedHandler() {
