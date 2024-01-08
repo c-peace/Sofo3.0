@@ -35,6 +35,24 @@ export default class MainCanvasDraw {
         }
     }
 
+    async #loadCanvas(url) {
+        const ctx = this.#ctx;
+        const mainImage = await this.#loadMainImage(url);
+        ctx.drawImage(mainImage, 0, 0);
+    }
+
+    async #loadMainImage(url) {
+        let img = new Image();
+        img.src = url;
+
+        const promise = new Promise((resolve) => {
+            img.onload = resolve;
+        });
+
+        await promise;
+        return img;
+    }
+
     searchImage(event, targetRef) {
         const file = event.target.files[0];
         const url = URL.createObjectURL(file);
@@ -265,10 +283,9 @@ export default class MainCanvasDraw {
         this.#resetSongform(listSongform);
     }
 
-    bringMainCanvasData(mainImage, numRef, tempoRef, numValue, tempoValue, listSongform, songformValue) {
-        this.drawCanvas(mainImage);
+    // 여기서 문제가 생기는데 무슨문제냐면...
+    async bringMainCanvasData(mainImage, numRef, tempoRef, numValue, tempoValue, listSongform, songformValue) {
+        await this.#loadCanvas(mainImage);
         this.#bringMusicData(numRef, tempoRef, numValue, tempoValue, listSongform, songformValue);
     }
-
-
 }
