@@ -47,6 +47,7 @@ export default class SlideControl {
         this.#listSlide = listSlide;
     }
 
+
     addSlide() {
         this.#setAddListSlide({
             id: this.#listSlide.length,
@@ -78,10 +79,11 @@ export default class SlideControl {
         this.#setNowIndex(index);
     };
 
-    loadSlideToCanvas(index) {
+    async loadSlideToCanvas(index) {
         this.#editControl(index);
         const slide = this.#listSlide[index];
-        this.#mainCanvasDraw.bringMainCanvasData(slide.mainImage, this.#numRef, this.#tempoRef, slide.num, slide.tempo, this.#listSongform, slide.songform);
+        await this.#mainCanvasDraw.bringMainCanvasData(slide.mainImage, this.#numRef, this.#tempoRef, slide.num, slide.tempo, this.#listSongform, slide.songform);
+        this.#mainCanvasDraw.reloadSongform(this.#listSongform);
         FlagCanvasData.bringFlagData(this.#listFlag, slide.flagList);
         this.#flagCanvasDraw.draw(this.#listFlag);
     };
@@ -98,8 +100,6 @@ export default class SlideControl {
         savedSlide.songform = Array.from(this.#listSongform);
         savedSlide.flagList = Array.from(this.#listFlag);
     };
-
-
 
     // RotatedCanvas로 변경 될 때 동작하는 Converter
     async convertRotatedSlide(canvasConvertRef, ctxConvert) {
