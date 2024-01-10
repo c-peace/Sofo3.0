@@ -30,7 +30,7 @@ const slideStore = create((set) => ({
 
     // selectIndex : select == true
     selectIndex: 0,
-    setSelectIndex: (newIndex) => set({selectIndex: newIndex}),
+    setSelectIndex: (newIndex) => set({ selectIndex: newIndex }),
 
 }));
 
