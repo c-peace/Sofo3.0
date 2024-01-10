@@ -15,6 +15,7 @@ export default function CanavasLayer() {
     const [startX, setStartX] = useState();
     const [startY, setStartY] = useState();
     const routineSetFirstStopRef = useRef(false);
+    const addSlideFirstStopRef = useRef(false);
     const flagCanvasDraw = new FlagCanvasDraw(ctxFlag);
     const mainCanvasDraw = new MainCanvasDraw(ctxMain);
     const slideControl = new SlideControl(listSlide);
@@ -60,6 +61,14 @@ export default function CanavasLayer() {
         mainCanvasDraw.reloadSongform(listSongform);
         flagCanvasDraw.draw(listFlag);
     }
+
+    useEffect(() => {
+        if (addSlideFirstStopRef.current) {
+            slideControl.loadSlideToCanvas(listSlide.length - 1);
+        } else {
+            addSlideFirstStopRef.current = true;
+        }
+    },[listSlide])
 
     const mouseDown = (e) => {
         flagCanvasDraw.myDown(e, dragok, setDragok, listFlag, setListFlag, setStartX, setStartY);
