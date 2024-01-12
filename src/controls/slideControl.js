@@ -9,6 +9,7 @@ import RotatedCanvasDraw from "./rotatedCanvasDraw";
 
 export default class SlideControl {
     // Slide Data
+    #setListSlide = slideStore((state) => state.setListSlide);
     #setAddListSlide = slideStore((state) => state.setAddListSlide);
     #setDelListSlide = slideStore((state) => state.setDelListSlide);
     #listSlide;
@@ -49,8 +50,10 @@ export default class SlideControl {
 
 
     addSlide() {
+        const slides = this.#listSlide;
+        const nowId = slides.at(-1).id;
         this.#setAddListSlide({
-            id: this.#listSlide.length,
+            id: nowId + 1,
             mainImage: defaultSheet,
             submitImage: defaultSheet,
             num: 1,
@@ -64,15 +67,36 @@ export default class SlideControl {
     delSlide() {
         if (this.#listSlide.length === 1) {
             alert('더 이상 슬라이드를 삭제할 수 없습니다.');
-        } else if (this.#listSlide.length === this.#nowIndex + 1) {
-            alert('선택되어 있는 슬라이드는 삭제할 수 없습니다.');
-        } else {
+        } else if (window.confirm('선택된 슬라이드를 삭제하시겠습니까?')) {
             this.#setDelListSlide();
         }
     };
 
+    // del 할 때 id를 재정리하는 함수
+    arrangeId() {
+        const slides = this.#listSlide;
+        for (let i = 0; i < slides.length; i++) {
+            slides[i].id = i;
+        }
+
+        this.#setListSlide(slides);
+    }
+
+    editAddControl(index) {
+        const slides = this.#listSlide;
+        slides[this.#nowIndex].edit = false;
+        slides[index].edit = true;
+        this.#setNowIndex(index);
+    };
+
+    editDelControl(index) {
+        const slides = this.#listSlide;
+        slides[index].edit = true;
+        this.#setNowIndex(index);
+    };
+
     // slide의 edit 변수를 변경해주는 함수
-    #editControl(index) {
+    #editLoadControl(index) {
         const slides = this.#listSlide;
         slides[this.#nowIndex].edit = false;
         slides[index].edit = true;
@@ -80,7 +104,7 @@ export default class SlideControl {
     };
 
     async loadSlideToCanvas(index) {
-        this.#editControl(index);
+        this.#editLoadControl(index);
         const slide = this.#listSlide[index];
         await this.#mainCanvasDraw.bringMainCanvasData(slide.mainImage, this.#numRef, this.#tempoRef, slide.num, slide.tempo, this.#listSongform, slide.songform);
         this.#mainCanvasDraw.reloadSongform(this.#listSongform);

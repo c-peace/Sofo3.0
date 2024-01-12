@@ -14,9 +14,17 @@ const slideStore = create((set) => ({
         flagList: [],
         edit: true,
     }],
+    slideAddDelCtrl: '',
 
-    setAddListSlide: (newSlide) => set((prev) => ({ listSlide: [...prev.listSlide, newSlide] })),
-    setDelListSlide: () => set((prev) => ({ listSlide: prev.listSlide.slice(0, -1) })),
+    setListSlide: (newListSlide) => set({listSlide: newListSlide}),
+    setAddListSlide: (newSlide) => {
+        set((prev) => ({ listSlide: [...prev.listSlide, newSlide] }));
+        set({ slideAddDelCtrl: 'add' });
+    },
+    setDelListSlide: () => {
+        set((prev) => ({ listSlide: [...prev.listSlide.slice(0, prev.nowIndex), ...prev.listSlide.slice(prev.nowIndex + 1, prev.listSlide.length)] }));
+        set({ slideAddDelCtrl: 'del' })
+    },
 
     // nowIndex : edit == true
     nowIndex: 0,
