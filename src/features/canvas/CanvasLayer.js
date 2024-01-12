@@ -8,14 +8,15 @@ import SlideControl from '../../controls/slideControl.js';
 
 export default function CanavasLayer() {
     const { canvasMainRef, canvasFlagRef, canvasSubmitRef, listFlag, setListFlag, ctxFlag, setCtxFlag, ctxMain, setCtxMain, setCtxSubmit, isColorApplied, isTypeApplied, listSongform, numRef, tempoRef } = canvasStore();
-    const { listSlide, nowIndex } = slideStore();
+    const { listSlide, slideAddDelCtrl, nowIndex } = slideStore();
 
 
     const [dragok, setDragok] = useState(false);
     const [startX, setStartX] = useState();
     const [startY, setStartY] = useState();
     const routineSetFirstStopRef = useRef(false);
-    const addSlideFirstStopRef = useRef(false);
+    const slideCtrlFirstStopRef = useRef(false);
+    const indexCtrlFirstStopRef = useRef(false);
     const flagCanvasDraw = new FlagCanvasDraw(ctxFlag);
     const mainCanvasDraw = new MainCanvasDraw(ctxMain);
     const slideControl = new SlideControl(listSlide);
@@ -27,6 +28,7 @@ export default function CanavasLayer() {
         FlagCanvasDraw.defaultSet(ctxFlag, listFlag, isColorApplied, isTypeApplied);
     }
 
+    // canvas
     useEffect(() => {
         const canvasMain = canvasMainRef.current;
         const ctxMain = canvasMain.getContext('2d');
@@ -49,26 +51,44 @@ export default function CanavasLayer() {
         drawDefaultSetting(ctxMain, ctxFlag);
     }, []);
 
+    // routineSet
     useEffect(() => {
         if (routineSetFirstStopRef.current) {
-            routineSetHandler();
+            mainCanvasDraw.reloadSongform(listSongform);
+            flagCanvasDraw.draw(listFlag);
         } else {
             routineSetFirstStopRef.current = true;
         }
     }, [isColorApplied, isTypeApplied])
 
-    function routineSetHandler() {
-        mainCanvasDraw.reloadSongform(listSongform);
-        flagCanvasDraw.draw(listFlag);
-    }
-
+    // slideCtrl
     useEffect(() => {
-        if (addSlideFirstStopRef.current) {
-            slideControl.loadSlideToCanvas(listSlide.length - 1);
+        if (slideCtrlFirstStopRef.current) {
+            if (slideAddDelCtrl === 'add') {
+                slideControl.editAddControl(listSlide.length - 1);
+            } else {
+                if (nowIndex === 0) {
+                    slideControl.editDelControl(0);
+                    slideControl.arrangeId();
+                    slideControl.loadSlideToCanvas(nowIndex);
+                } else {
+                    slideControl.editDelControl(nowIndex - 1);
+                    slideControl.arrangeId();
+                }
+            }
         } else {
-            addSlideFirstStopRef.current = true;
+            slideCtrlFirstStopRef.current = true;
         }
-    },[listSlide])
+    }, [listSlide])
+
+    // indexCtrl
+    useEffect(() => {
+        if (indexCtrlFirstStopRef.current) {
+            slideControl.loadSlideToCanvas(nowIndex);
+        } else {
+            indexCtrlFirstStopRef.current = true;
+        }
+    }, [nowIndex])
 
     const mouseDown = (e) => {
         flagCanvasDraw.myDown(e, dragok, setDragok, listFlag, setListFlag, setStartX, setStartY);
