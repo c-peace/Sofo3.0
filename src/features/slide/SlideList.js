@@ -26,7 +26,7 @@ function SlideForm({ slide }) {
     }
 
     const handlerSlideClick = (index) => {
-        slideControl.saveSlide();
+        // slideControl.saveSlide();
         slideControl.loadSlideToCanvas(index);
     }
 

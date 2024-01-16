@@ -9,5 +9,4 @@ export default class SubmitCanvasControl {
         this.#ctx.drawImage(canvasMainRef.current, 0, 0);
         this.#ctx.drawImage(canvasFlagRef.current, 0, 0);
     }
-
 }
