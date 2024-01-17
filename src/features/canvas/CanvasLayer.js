@@ -8,7 +8,7 @@ import SlideControl from '../../controls/slideControl.js';
 
 export default function CanavasLayer() {
     const { canvasMainRef, canvasFlagRef, canvasSubmitRef, listFlag, setListFlag, ctxFlag, setCtxFlag, ctxMain, setCtxMain, setCtxSubmit, isColorApplied, isTypeApplied, listSongform, numRef, tempoRef } = canvasStore();
-    const { listSlide, slideAddDelCtrl, nowIndex } = slideStore();
+    const { listSlide, slideAddDelCtrl, nowIndex, changeSaveSlide, setChangeSaveSlide } = slideStore();
 
 
     const [dragok, setDragok] = useState(false);
@@ -17,6 +17,7 @@ export default function CanavasLayer() {
     const routineSetFirstStopRef = useRef(false);
     const slideCtrlFirstStopRef = useRef(false);
     const indexCtrlFirstStopRef = useRef(false);
+    const saveFirstStopRef = useRef(false);
     const flagCanvasDraw = new FlagCanvasDraw(ctxFlag);
     const mainCanvasDraw = new MainCanvasDraw(ctxMain);
     const slideControl = new SlideControl(listSlide);
@@ -56,6 +57,8 @@ export default function CanavasLayer() {
         if (routineSetFirstStopRef.current) {
             mainCanvasDraw.reloadSongform(listSongform);
             flagCanvasDraw.draw(listFlag);
+            setChangeSaveSlide();
+
         } else {
             routineSetFirstStopRef.current = true;
         }
@@ -89,6 +92,15 @@ export default function CanavasLayer() {
             indexCtrlFirstStopRef.current = true;
         }
     }, [nowIndex])
+
+    useEffect(() => {
+        if (saveFirstStopRef.current) {
+            slideControl.saveSlide();
+        } else {
+            saveFirstStopRef.current = true;
+        }
+        
+    },[changeSaveSlide])
 
     const mouseDown = (e) => {
         flagCanvasDraw.myDown(e, dragok, setDragok, listFlag, setListFlag, setStartX, setStartY);

@@ -3,6 +3,7 @@ import CanavasLayer from './CanvasLayer';
 import DrawBtnLayer from './DrawBtnLayer';
 import CanvasRotated from './CanvasRotated';
 import canvasStore from '../../stateManage/canvasStore';
+import slideStore from '../../stateManage/slideStore';
 
 export default function Canavas() {
     const { isRotated } = canvasStore();
@@ -16,11 +17,12 @@ export default function Canavas() {
 
 function IsRotatedCanvas() {
     const { isRotated } = canvasStore();
+    const { setChangeSaveSlide } = slideStore();
 
     if (isRotated) {
         return <CanvasRotated />;
     } else {
-        return <div>
+        return <div onClick={() => setChangeSaveSlide()}>
             <DrawBtnLayer />
             <CanavasLayer />
         </div>;

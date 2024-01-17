@@ -26,6 +26,10 @@ const slideStore = create((set) => ({
         set({ slideAddDelCtrl: 'del' })
     },
 
+    // canvas가 변화될 때
+    changeSaveSlide: false,
+    setChangeSaveSlide: () => set((prev) => ({changeSaveSlide: prev.changeSaveSlide ? false : true})),
+
     // nowIndex : edit == true
     nowIndex: 0,
     setNowIndex: (newIndex) => set({ nowIndex: newIndex }),

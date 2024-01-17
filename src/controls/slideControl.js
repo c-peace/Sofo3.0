@@ -115,14 +115,15 @@ export default class SlideControl {
     // Canvas가 Edit 되었을 때 Slide에 내용물이 저장되는 기능
     // save 기능을 어디에 붙여서 실시간으로 작동하게 할지를 고민해야함.
     saveSlide() {
+        const savedSlide = this.#listSlide;
         this.#submitCanvasControl.combineCanvas(this.#canvasMainRef, this.#canvasFlagRef);
-        const savedSlide = this.#listSlide[this.#nowIndex];
-        savedSlide.mainImage = this.#canvasMainRef.current.toDataURL();
-        savedSlide.submitImage = this.#canvasSubmitRef.current.toDataURL();
-        savedSlide.num = this.#numRef.current.value;
-        savedSlide.tempo = this.#tempoRef.current.value;
-        savedSlide.songform = Array.from(this.#listSongform);
-        savedSlide.flagList = Array.from(this.#listFlag);
+        savedSlide[this.#nowIndex].mainImage = this.#canvasMainRef.current.toDataURL();
+        savedSlide[this.#nowIndex].submitImage = this.#canvasSubmitRef.current.toDataURL();
+        savedSlide[this.#nowIndex].num = this.#numRef.current.value;
+        savedSlide[this.#nowIndex].tempo = this.#tempoRef.current.value;
+        savedSlide[this.#nowIndex].songform = Array.from(this.#listSongform);
+        savedSlide[this.#nowIndex].flagList = Array.from(this.#listFlag);
+        this.#setListSlide(savedSlide);
     };
 
     // RotatedCanvas로 변경 될 때 동작하는 Converter

@@ -1,6 +1,7 @@
 import MainCanvasData from "./mainCanvasData";
 import defaultSheet from "../assets/defaultSheet.png";
 import canvasStore from "../stateManage/canvasStore";
+import slideStore from "../stateManage/slideStore";
 
 export default class MainCanvasDraw {
     #ctx;
@@ -9,6 +10,7 @@ export default class MainCanvasDraw {
 
     #isColorApplied = canvasStore((state) => state.isColorApplied);
     #isTypeApplied = canvasStore((state) => state.isTypeApplied);
+    #setChangeSaveSlide = slideStore((state) => state.setChangeSaveSlide);
 
     constructor(ctx) {
         this.#ctx = ctx;
@@ -26,13 +28,12 @@ export default class MainCanvasDraw {
         MainCanvasData.bringTempoValue(tempoRef, slide.tempo);
     }
 
-    drawCanvas(url) {
+    async drawCanvas(url) {
         const ctx = this.#ctx;
-        const image = new Image();
-        image.src = url;
-        image.onload = function () {
-            ctx.drawImage(image, 0, 0);
-        }
+        const image = await this.#loadMainImage(url);
+        ctx.drawImage(image, 0, 0);
+
+        this.#setChangeSaveSlide();
     }
 
     async #loadCanvas(url) {
@@ -65,30 +66,36 @@ export default class MainCanvasDraw {
         ctx.fillRect(0, 170, this.#canvasWidth, this.#canvasHeight);
     }
 
-    #drawImage(url, targetRef) {
+    async #drawImage(url, targetRef) {
         const ctx = this.#ctx;
-        const canvasWidth = this.#canvasWidth;
-        const canvasHeight = this.#canvasHeight;
 
-        // clearImage를 onload안에 넣는 법을 찾아야함.
-        // const clearImage = this.#clearImage();
+        const image = await this.#loadDrawImage(url);
+        // set image size
+        let imageHeight = (this.#canvasHeight - 166) * 96 / 100;
+        let imageWidth = image.width * imageHeight / image.height;
 
-        const image = new Image();
-        image.src = url;
-        image.onload = function () {
-            // clearImage;
-            // set image size
-            let imageHeight = (canvasHeight - 166) * 96 / 100;
-            let imageWidth = image.width * imageHeight / image.height;
+        if (imageWidth > this.#canvasWidth * 96 / 100) {
+            imageWidth = this.#canvasWidth * 96 / 100;
+            imageHeight = image.height * imageWidth / image.width;
+        }
 
-            if (imageWidth > canvasWidth * 96 / 100) {
-                imageWidth = canvasWidth * 96 / 100;
-                imageHeight = image.height * imageWidth / image.width;
-            }
+        this.#clearImage();
+        ctx.drawImage(image, (this.#canvasWidth - imageWidth) / 2, (166 + this.#canvasHeight - imageHeight) / 2, imageWidth, imageHeight);
 
-            ctx.drawImage(image, (canvasWidth - imageWidth) / 2, (166 + canvasHeight - imageHeight) / 2, imageWidth, imageHeight);
-        };
         MainCanvasData.resetImageValue(targetRef);
+        this.#setChangeSaveSlide();
+    }
+
+    async #loadDrawImage(url) {
+        let img = new Image();
+        img.src = url;
+
+        const promise = new Promise((resolve) => {
+            img.onload = resolve;
+        });
+
+        await promise;
+        return img;
     }
 
     drawNum(value) {
@@ -283,7 +290,6 @@ export default class MainCanvasDraw {
         this.#resetSongform(listSongform);
     }
 
-    // 여기서 문제가 생기는데 무슨문제냐면...
     async bringMainCanvasData(mainImage, numRef, tempoRef, numValue, tempoValue, listSongform, songformValue) {
         await this.#loadCanvas(mainImage);
         this.#bringMusicData(numRef, tempoRef, numValue, tempoValue, listSongform, songformValue);

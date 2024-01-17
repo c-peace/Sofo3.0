@@ -1,10 +1,12 @@
 import FlagCanvasDraw from '../../controls/flagCanvasDraw';
 import MainCanvasDraw from '../../controls/mainCanvasDraw';
 import canvasStore from '../../stateManage/canvasStore';
+import slideStore from '../../stateManage/slideStore';
 import './CanvasBtnR.css'
 
 export default function CanvasBtnR() {
     const { ctxMain, ctxFlag, numRef, tempoRef, listSongform, listFlag } = canvasStore();
+    const { setChangeSaveSlide } = slideStore();
 
     const mainCanvasDraw = new MainCanvasDraw(ctxMain);
     const flagCanvasDraw = new FlagCanvasDraw(ctxFlag);
@@ -16,6 +18,7 @@ export default function CanvasBtnR() {
                 break;
 
             case 'Reset':
+                setChangeSaveSlide()
                 mainCanvasDraw.resetMainCanvasData(numRef, tempoRef, listSongform);
                 flagCanvasDraw.resetFlag(listFlag);
                 break;
