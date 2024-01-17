@@ -1,7 +1,5 @@
 import './RoutineSet.css'
 import canvasStore from "../../stateManage/canvasStore"
-import MainCanvasDraw from '../../controls/mainCanvasDraw';
-import FlagCanvasDraw from '../../controls/flagCanvasDraw';
 
 export default function RoutineSet() {
     return (

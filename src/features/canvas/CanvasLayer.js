@@ -8,7 +8,7 @@ import SlideControl from '../../controls/slideControl.js';
 
 export default function CanavasLayer() {
     const { canvasMainRef, canvasFlagRef, canvasSubmitRef, listFlag, setListFlag, ctxFlag, setCtxFlag, ctxMain, setCtxMain, setCtxSubmit, isColorApplied, isTypeApplied, listSongform, numRef, tempoRef } = canvasStore();
-    const { listSlide, slideAddDelCtrl, nowIndex, changeSaveSlide } = slideStore();
+    const { listSlide, slideAddDelCtrl, nowIndex, changeSaveSlide, setChangeSaveSlide } = slideStore();
 
 
     const [dragok, setDragok] = useState(false);
@@ -57,6 +57,8 @@ export default function CanavasLayer() {
         if (routineSetFirstStopRef.current) {
             mainCanvasDraw.reloadSongform(listSongform);
             flagCanvasDraw.draw(listFlag);
+            setChangeSaveSlide();
+
         } else {
             routineSetFirstStopRef.current = true;
         }
