@@ -1,10 +1,14 @@
+* {
+    cursor: default;
+}
+
 #modalView {
     position: absolute;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.75);
+    background-color: rgba(0, 0, 0, 0.92);
     z-index: 2;
     display: flex;
     flex-direction: column;
@@ -12,28 +16,50 @@
     align-items: center;
 }
 
+#modalBox {
+    background-color: transparent;
+    border: 1px solid rgb(184, 184, 184);
+    padding: 16px;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 hr {
-    width: 500px;
+    width: 400px;
     color: white;
 }
 
-#modalView h1, h3, big, u, p, small {
+img {
+    background-color: transparent;
+    margin-bottom: 6px;
+}
+
+#modalView h1, h3, h4, big, u, p, small {
     background-color: transparent;
     color: white;
     text-shadow: 2px 2px rgba(0, 0, 0, 0.886);
 }
 
 #modalView h1 {
-    margin-bottom: 10px;
-    font-size: 40px;
+    margin-bottom: 20px;
+    font-size: 30px;
 }
 
 #modalView h3 {
-    margin-bottom: 16px;
+    margin-bottom: 10px;
+}
+
+#modalView h4 {
+    margin: 8px;
 }
 
 #modalView p {
+    background-color: rgb(46, 46, 46);
     font-weight: bold;
     margin: 8px;
-    line-height: 150%;
+    line-height: 170%;
+    padding: 16px;
+    border-radius: 10px;
 }
