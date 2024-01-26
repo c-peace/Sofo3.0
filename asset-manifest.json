@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/Sofo3.0/static/css/main.683e0cde.css",
-    "main.js": "/Sofo3.0/static/js/main.f0f8f09f.js",
-    "static/js/498.d1e2c196.chunk.js": "/Sofo3.0/static/js/498.d1e2c196.chunk.js",
-    "static/js/703.0a3bd711.chunk.js": "/Sofo3.0/static/js/703.0a3bd711.chunk.js",
-    "static/js/379.f1e423fc.chunk.js": "/Sofo3.0/static/js/379.f1e423fc.chunk.js",
-    "static/js/496.efba3329.chunk.js": "/Sofo3.0/static/js/496.efba3329.chunk.js",
-    "static/media/sofoLogo.png": "/Sofo3.0/static/media/sofoLogo.891f58a1bb477e2e0c19.png",
-    "static/media/defaultSheet.png": "/Sofo3.0/static/media/defaultSheet.c49e504375fffd8ebc0a.png",
-    "static/media/fontello.eot?56431239": "/Sofo3.0/static/media/fontello.0756c741d729721ca2db.eot",
-    "static/media/fontello.svg?56431239": "/Sofo3.0/static/media/fontello.c34b4e256bf13ccd35d5.svg",
-    "index.html": "/Sofo3.0/index.html",
-    "main.683e0cde.css.map": "/Sofo3.0/static/css/main.683e0cde.css.map",
-    "main.f0f8f09f.js.map": "/Sofo3.0/static/js/main.f0f8f09f.js.map",
-    "498.d1e2c196.chunk.js.map": "/Sofo3.0/static/js/498.d1e2c196.chunk.js.map",
-    "703.0a3bd711.chunk.js.map": "/Sofo3.0/static/js/703.0a3bd711.chunk.js.map",
-    "379.f1e423fc.chunk.js.map": "/Sofo3.0/static/js/379.f1e423fc.chunk.js.map",
-    "496.efba3329.chunk.js.map": "/Sofo3.0/static/js/496.efba3329.chunk.js.map"
+    "main.css": "/static/css/main.0b2ebd27.css",
+    "main.js": "/static/js/main.82ff17fb.js",
+    "static/js/498.d1e2c196.chunk.js": "/static/js/498.d1e2c196.chunk.js",
+    "static/js/703.0a3bd711.chunk.js": "/static/js/703.0a3bd711.chunk.js",
+    "static/js/379.f1e423fc.chunk.js": "/static/js/379.f1e423fc.chunk.js",
+    "static/js/496.efba3329.chunk.js": "/static/js/496.efba3329.chunk.js",
+    "static/media/sofoLogo.png": "/static/media/sofoLogo.891f58a1bb477e2e0c19.png",
+    "static/media/defaultSheet.png": "/static/media/defaultSheet.c49e504375fffd8ebc0a.png",
+    "static/media/fontello.eot?56431239": "/static/media/fontello.0756c741d729721ca2db.eot",
+    "static/media/fontello.svg?56431239": "/static/media/fontello.c34b4e256bf13ccd35d5.svg",
+    "index.html": "/index.html",
+    "main.0b2ebd27.css.map": "/static/css/main.0b2ebd27.css.map",
+    "main.82ff17fb.js.map": "/static/js/main.82ff17fb.js.map",
+    "498.d1e2c196.chunk.js.map": "/static/js/498.d1e2c196.chunk.js.map",
+    "703.0a3bd711.chunk.js.map": "/static/js/703.0a3bd711.chunk.js.map",
+    "379.f1e423fc.chunk.js.map": "/static/js/379.f1e423fc.chunk.js.map",
+    "496.efba3329.chunk.js.map": "/static/js/496.efba3329.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.683e0cde.css",
-    "static/js/main.f0f8f09f.js"
+    "static/css/main.0b2ebd27.css",
+    "static/js/main.82ff17fb.js"
   ]
 }
