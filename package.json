@@ -2,7 +2,7 @@
   "name": "codespaces-react",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://c-peace.github.io/Sofo3.0",
+  "homepage": "http://sofomusic.com",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
