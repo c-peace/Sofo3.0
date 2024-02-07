@@ -60,6 +60,7 @@ img {
     font-weight: bold;
     margin: 8px;
     line-height: 170%;
-    padding: 16px;
+    padding: 12px;
     border-radius: 10px;
+    text-align: center;
 }
