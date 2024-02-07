@@ -46,15 +46,17 @@ export default function Modal() {
                     <br />
                     <br />
 
-                    <h4>© 악보 복제 라이선스를 구입해 주세요!</h4>
+                    <h4>© 악보 복제 라이선스를 준비해 주세요!</h4>
                     <h4>‣ 악보를 복제, 인쇄 하기 위해선 복제 라이선스가 필요합니다!</h4>
                     <br />
                     <br />
 
-                    <h4>💰 악보를 구매해 주세요!</h4>
+                    <h4>💰 악보 원본을 준비해 주세요!</h4>
                     <h4>‣ 작곡가에게 악보료를 지급되는 정직한 ccm문화를 만들어요!</h4>
                     <br />
                     <br />
+                    
+                    <h4>✦ 우측 상단 Copyright를 참고해주세요!</h4>
                     <br />
 
                     <hr></hr>
@@ -66,18 +68,4 @@ export default function Modal() {
 
     }
 
-}
-
-function modalPages(index) {
-    switch (index) {
-        case 0:
-
-            break;
-        case 1:
-
-            break;
-
-        default:
-            break;
-    }
 }
