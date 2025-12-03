@@ -7,3 +7,6 @@
 
 ## Sofo Develop 💻
 - 우린 Git Flow를 참고해서 Branch 관리를 할거야.
+
+  
+<img width="1789" height="973" alt="Screenshot 2025-12-03 at 10 25 31 PM" src="https://github.com/user-attachments/assets/f9862b6e-c959-4f5e-87fb-f2919fb73e7c" />
